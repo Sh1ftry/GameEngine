@@ -41,4 +41,6 @@ public:
 	*/
 	int getHeight() const { return _height; };
 
+	void setWidthAndHeight(int width, int height) { _width = width; _height = height; }
+
 };
