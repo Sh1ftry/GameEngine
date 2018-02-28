@@ -10,6 +10,7 @@ int main()
 	while (!window.isClosed())
 	{
 		glClear(GL_COLOR_BUFFER_BIT);
+
 		//update window state
 		window.update();
 	}

@@ -1,7 +1,7 @@
 #include "window.h"
 #include <iostream>
 
-Window::Window(const char* name, unsigned int width, unsigned int height) 
+Window::Window(const char* name, int width, int height) 
 	: _name(name), _width(width), _height(height)
 {
 
@@ -31,9 +31,11 @@ Window::~Window()
 	glfwTerminate();
 }
 
-void Window::update() const
+void Window::update()
 {
 	glfwPollEvents();
+	//getting width and height
+	glfwGetFramebufferSize(_window, &_width, &_height);
 	//double buffering
 	glfwSwapBuffers(_window);
 }
