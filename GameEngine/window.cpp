@@ -26,7 +26,10 @@ Window::Window(const char* name, int width, int height)
 	//registering opengl context to window
 	glfwMakeContextCurrent(_window);
 
+	//seting pointer associated with the created GLFW window to this class
 	glfwSetWindowUserPointer(_window, this);
+
+	//setting 'windowResized' function as a callback to resizing window
 	glfwSetFramebufferSizeCallback(_window, windowResized);
 
 }
@@ -38,6 +41,9 @@ Window::~Window()
 
 void windowResized(GLFWwindow* window, int width, int height)
 {
+	//its safe to assume that 'glfwGetWindowUserPointer' will
+	//return pointer to valid Window object, because the object
+	//exists as long as the GLFW is working
 	Window* win = static_cast<Window*>(glfwGetWindowUserPointer(window));
 	win->setWidthAndHeight(width, height);
 	std::cout << width << "x" << height << std::endl;
@@ -45,9 +51,8 @@ void windowResized(GLFWwindow* window, int width, int height)
 
 void Window::update()
 {
+	//process event waiting in event queue
 	glfwPollEvents();
-	//getting width and height
-	glfwGetFramebufferSize(_window, &_width, &_height);
-	//double buffering
+	//swapping buffers for double buffering
 	glfwSwapBuffers(_window);
 }
