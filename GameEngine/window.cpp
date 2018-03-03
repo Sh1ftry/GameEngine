@@ -29,8 +29,16 @@ Window::Window(const char* name, int width, int height)
 	//seting pointer associated with the created GLFW window to this class
 	glfwSetWindowUserPointer(_window, this);
 
-	//setting 'windowResized' function as a callback to resizing window
+	//setting 'windowResized' function as a callback to window being resized
 	glfwSetFramebufferSizeCallback(_window, windowResized);
+
+	if (glewInit() != GLEW_OK)
+	{
+		glfwTerminate();
+		std::cout << "Could not initialize GLEW!" << std::endl;
+	}
+
+	std::cout << "OpenGL " << glGetString(GL_VERSION) << " is up and running!" << std::endl;
 
 }
 
