@@ -19,6 +19,9 @@
     <Filter Include="Header Files\Graphics">
       <UniqueIdentifier>{842823c5-59c6-485f-9633-005169306c2a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Input">
+      <UniqueIdentifier>{246f5ba4-72e2-42c9-aab4-8d67338c65ee}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

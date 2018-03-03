@@ -1,4 +1,5 @@
 #include "window.h"
+#include <iostream>
 
 int main()
 {
@@ -10,7 +11,10 @@ int main()
 	while (!window.isClosed())
 	{
 		glClear(GL_COLOR_BUFFER_BIT);
-
+		if (window.isKeyboardKeyPressed(GLFW_KEY_W))
+			std::cout << "'W' is pressed!" << std::endl;
+		if (window.isMouseButtonPressed(GLFW_MOUSE_BUTTON_LEFT))
+			std::cout << "LMB is pressed!" << std::endl;
 		//update window state
 		window.update();
 	}

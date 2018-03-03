@@ -3,15 +3,31 @@
 #include <GLFW\glfw3.h>
 
 /*
+*	@brief Max mouse buttons
+*/
+#define MAX_BUTTONS 32
+#define MAX_KEYS 1024
+
+/*
 *
 *	@brief Class responsible for handling GLFW window
 *
 */
-class Window {
+class Window
+{
 private:
 	const char* _name;
 	int _height, _width;
 	GLFWwindow* _window;
+
+	//mouse buttons array
+	bool _mouseButtons[MAX_BUTTONS];
+	//mouse cursor position
+	double _x, _y;
+
+	//keyboard keys array
+	bool _keyboardKeys[MAX_KEYS];
+
 public:
 	/*
 	*	@brief Costructor initializes GLFW and creates window
@@ -42,6 +58,56 @@ public:
 	*/
 	int getHeight() const { return _height; };
 
+	/*
+	*	@brief Sets width and height of window. Does not resize window
+	*	@param[in] width New width value
+	*	@param[in] height New height value
+	*/
 	void setWidthAndHeight(int width, int height) { _width = width; _height = height; }
+
+	/*
+	*	@brief Sets keyboard key as pressed
+	*	@param[in] code Code of pressed key
+	*/
+	void keyboardKeyPressed(unsigned int code);
+	/*
+	*	@brief Sets keyboard key as released
+	*	@param[in] code Code of released key
+	*/
+	void keyboardKeyReleased(unsigned int code);
+	/*
+	*	@brief Checks if keyboard key is pressed
+	*	@param[in] code Code of key to check
+	*	@return true if key is pressed, otherwise false
+	*/
+	bool isKeyboardKeyPressed(unsigned int code) const;
+	/*
+	*	@brief Sets mouse button as pressed
+	*	@param[in] code Code of pressed button
+	*/
+	void mouseButtonPressed(unsigned int code);
+	/*
+	*	@brief Sets mouse button as released
+	*	@param[in] code Code of released button
+	*/
+	void mouseButtonReleased(unsigned int code);
+	/*
+	*	@brief Checks if mouse button is pressed
+	*	@param[in] code Code of button to check
+	*	@return true if button is pressed, otherwise false
+	*/
+	bool isMouseButtonPressed(unsigned int code) const;
+	/*
+	*	@brief Sets position of mouse cursor
+	*	@param[in] x Value of x
+	*	@param[in] y Value of y
+	*/
+	void setMouseCursorPosition(double x, double y);
+	/*
+	*	@param[out] x Value of x
+	*	@param[out] y Value of y
+	*	@return Position of mouse cursor
+	*/
+	void getMouseCursorPosition(double& x, double& y) const;
 
 };
