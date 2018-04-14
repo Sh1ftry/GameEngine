@@ -31,6 +31,12 @@
     <Filter Include="Resource Files\Shaders">
       <UniqueIdentifier>{39c7ced6-9e47-4b61-89a4-ae5d84d92ed0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Graphics\Buffers">
+      <UniqueIdentifier>{a8260cf7-162f-4e86-8131-37f734bed2fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Buffer">
+      <UniqueIdentifier>{6ff0a011-7276-4e19-b96b-522bf8c659e1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -45,6 +51,15 @@
     <ClCompile Include="shader.cpp">
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="buffer.cpp">
+      <Filter>Source Files\Graphics\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="indexbuffer.cpp">
+      <Filter>Source Files\Graphics\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="vertexarray.cpp">
+      <Filter>Source Files\Graphics\Buffer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="window.h">
@@ -55,6 +70,15 @@
     </ClInclude>
     <ClInclude Include="shader.h">
       <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="buffer.h">
+      <Filter>Header Files\Graphics\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="indexbuffer.h">
+      <Filter>Header Files\Graphics\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="vertexarray.h">
+      <Filter>Header Files\Graphics\Buffers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

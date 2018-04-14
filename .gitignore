@@ -261,3 +261,4 @@ __pycache__/
 *.pyc
 /Dependencies/GLFW
 /Dependencies/GLEW/include/GL
+/Dependencies/glm/include/glm
