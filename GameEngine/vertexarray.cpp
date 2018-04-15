@@ -23,12 +23,12 @@ void VertexArray::addBuffer(Buffer * buffer, GLuint index)
 	unbind();
 }
 
-void VertexArray::bind()
+void VertexArray::bind() const
 {
 	glBindVertexArray(_vertexID);
 }
 
-void VertexArray::unbind()
+void VertexArray::unbind() const
 {
 	glBindVertexArray(0);
 }
