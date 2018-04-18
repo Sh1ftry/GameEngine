@@ -71,6 +71,12 @@ void Window::update()
 	glfwPollEvents();
 	//swapping buffers for double buffering
 	glfwSwapBuffers(_window);
+	//showing errors
+	GLenum err;
+	while ((err = glGetError()) != GL_NO_ERROR)
+	{
+		std::cout << err << std::endl;
+	}
 }
 
 void Window::keyboardKeyPressed(unsigned int code)

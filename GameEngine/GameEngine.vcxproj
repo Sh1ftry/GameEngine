@@ -128,23 +128,23 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="buffer.cpp" />
+    <ClCompile Include="renderer2d.cpp" />
     <ClCompile Include="file_reader.cpp" />
     <ClCompile Include="indexbuffer.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="simple_renderer2d.cpp" />
     <ClCompile Include="shader.cpp" />
     <ClCompile Include="vertexarray.cpp" />
     <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="buffer.h" />
+    <ClInclude Include="renderer2d.h" />
     <ClInclude Include="file_reader.h" />
     <ClInclude Include="indexbuffer.h" />
     <ClInclude Include="renderable2d.h" />
-    <ClInclude Include="renderer2d.h" />
     <ClInclude Include="shader.h" />
-    <ClInclude Include="simple_renderer2d.h" />
     <ClInclude Include="vertexarray.h" />
+    <ClInclude Include="vertex_data.h" />
     <ClInclude Include="window.h" />
   </ItemGroup>
   <ItemGroup>

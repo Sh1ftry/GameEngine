@@ -37,6 +37,12 @@
     <Filter Include="Source Files\Graphics\Buffer">
       <UniqueIdentifier>{6ff0a011-7276-4e19-b96b-522bf8c659e1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Graphics\Renderables">
+      <UniqueIdentifier>{81c9f4eb-5c47-4e21-84e0-fb92f9ea372f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Renderables">
+      <UniqueIdentifier>{7b0cbaa0-e792-4806-bf7e-132ae6db258b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -60,7 +66,7 @@
     <ClCompile Include="vertexarray.cpp">
       <Filter>Source Files\Graphics\Buffer</Filter>
     </ClCompile>
-    <ClCompile Include="simple_renderer2d.cpp">
+    <ClCompile Include="renderer2d.cpp">
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
   </ItemGroup>
@@ -83,13 +89,13 @@
     <ClInclude Include="vertexarray.h">
       <Filter>Header Files\Graphics\Buffers</Filter>
     </ClInclude>
-    <ClInclude Include="renderable2d.h">
+    <ClInclude Include="vertex_data.h">
       <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="renderable2d.h">
+      <Filter>Header Files\Graphics\Renderables</Filter>
     </ClInclude>
     <ClInclude Include="renderer2d.h">
-      <Filter>Header Files\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="simple_renderer2d.h">
       <Filter>Header Files\Graphics</Filter>
     </ClInclude>
   </ItemGroup>
