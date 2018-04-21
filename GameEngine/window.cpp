@@ -78,7 +78,7 @@ void Window::update()
 	GLenum err;
 	while ((err = glGetError()) != GL_NO_ERROR)
 	{
-		std::cout << err << std::endl;
+		std::cout << "OpenGL error: " << err << std::endl;
 	}
 }
 
