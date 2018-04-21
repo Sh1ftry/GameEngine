@@ -259,6 +259,7 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/Dependencies
 /Dependencies/GLFW
 /Dependencies/GLEW/include/GL
 /Dependencies/glm/include/glm
