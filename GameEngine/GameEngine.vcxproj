@@ -132,6 +132,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="buffer.cpp" />
+    <ClCompile Include="renderer.cpp" />
     <ClCompile Include="renderer2d.cpp" />
     <ClCompile Include="file_reader.cpp" />
     <ClCompile Include="indexbuffer.cpp" />
@@ -142,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="buffer.h" />
+    <ClInclude Include="renderer.h" />
     <ClInclude Include="renderer2d.h" />
     <ClInclude Include="file_reader.h" />
     <ClInclude Include="indexbuffer.h" />

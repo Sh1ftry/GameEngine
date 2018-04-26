@@ -2,16 +2,10 @@
 
 layout (location = 0) out vec4 color;
 
-in DATA
-{
-	vec4 color;
-	vec4 position;
-} fs_in;
-
-uniform vec2 light_position;
+uniform vec4 col;
 
 void main()
 {
-	float intensity = 1.0f / length(fs_in.position.xy - light_position) * 50;
-	color = fs_in.color * intensity;
+	//float intensity = 1.0f / length(fs_in.position.xy - light_position) * 50;
+	color = col;
 }
