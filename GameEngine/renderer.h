@@ -10,11 +10,10 @@ private:
 		glm::vec3 position;
 		glm::vec4 color;
 	};
-	GLuint _elementBuffer;
 	GLuint _vertexArray;
 	Shader* _shader;
 public:
-	Renderer();
+	Renderer(Shader* shader);
 	~Renderer();
-	void draw(const Renderable2D* renderable, glm::vec4 color) const;
+	void draw(const Renderable2D& renderable) const;
 };

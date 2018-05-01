@@ -7,8 +7,8 @@
 #include "window.h"
 #include "file_reader.h"
 #include "shader.h"
-#include "renderer2d.h"
 #include "timer.h"
+#include "renderer.h"
 #include <vector>
 
 int main()
@@ -22,17 +22,8 @@ int main()
 
 	const glm::mat4 ortho = glm::ortho(0.f, 800.f, 0.f, 600.f, -1.0f, 1.0f);
 	shader.setUniformMat4("projection", ortho);
-
-	std::vector<Renderable2D> sprites;
-	for(int i = 0; i < 100; i+=1)
-	{
-		for(int j = 0; j < 100; j+=1)
-		{
-			sprites.push_back(Renderable2D(glm::vec3((float)i * 8, (float)j * 6, 0), glm::vec2(7.9f, 5.9f), glm::vec4(static_cast<float>(i) / 100, static_cast<float>(j) / 100, 0.5f, 1.f)));
-		}
-	}
 	
-	Renderer2D renderer;
+	Renderer renderer(&shader);
 	Timer timer;
 	unsigned int fps = 0;
 	bool up = true;
@@ -40,24 +31,17 @@ int main()
 	while (!window.isClosed())
 	{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		double x;
-		double y;
-		window.getMouseCursorPosition(x, y);
-		shader.setUniform2f("light_position", glm::vec2(x,600 - y));
-		renderer.begin();
-		for(std::vector<Renderable2D>::const_iterator it = sprites.begin(); it != sprites.end(); ++it)
-		{
-			renderer.submit(*it);
-		}
-		renderer.end();
-		renderer.flush();
+		for(int i = 0; i < 80; i++)
+			for(int j = 0; j < 60; j++)
+				renderer.draw(Renderable2D(glm::vec3(i*10, j*10, 0), glm::vec2(9.9f, 9.9f), glm::vec4(0.4f, 0.6f, 0.7f, 1.0f)));
+		
 		//update window state
 		window.update();
 		fps++;
 		if(timer.time().count() > 1.f)
 		{
 			//one second passed, show fps
-			//std::cout << fps << std::endl;
+			std::cout << fps << std::endl;
 			fps = 0;
 			timer.restart();
 			up = !up;
