@@ -137,6 +137,7 @@
     <ClCompile Include="file_reader.cpp" />
     <ClCompile Include="indexbuffer.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="resource_manager.cpp" />
     <ClCompile Include="shader.cpp" />
     <ClCompile Include="vertexarray.cpp" />
     <ClCompile Include="window.cpp" />
@@ -148,7 +149,9 @@
     <ClInclude Include="file_reader.h" />
     <ClInclude Include="indexbuffer.h" />
     <ClInclude Include="renderable2d.h" />
+    <ClInclude Include="resource_manager.h" />
     <ClInclude Include="shader.h" />
+    <ClInclude Include="texture.h" />
     <ClInclude Include="timer.h" />
     <ClInclude Include="vertexarray.h" />
     <ClInclude Include="vertex_data.h" />

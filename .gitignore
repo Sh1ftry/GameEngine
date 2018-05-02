@@ -263,3 +263,8 @@ __pycache__/
 /Dependencies/GLFW
 /Dependencies/GLEW/include/GL
 /Dependencies/glm/include/glm
+/GameEngine/test.png
+/GameEngine/test.jpg
+/GameEngine/sheet_hero_idle.png
+/GameEngine/sheet_hero_dead.png
+/GameEngine/attack.png
