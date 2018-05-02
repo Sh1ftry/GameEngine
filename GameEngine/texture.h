@@ -1,46 +1,40 @@
 #pragma once
 #include <GL/glew.h>
+#include <glm/detail/type_vec2.hpp>
 
 class Texture
 {
-	GLuint _texture;
-	unsigned int _height;
-	unsigned int _widht;
-	unsigned int _rows;
-	unsigned int _cols;
+	GLuint _id;
+	glm::vec2 _size;
+	glm::vec2 _gridSize;
+	glm::vec2 _frameSize;
 public:
 	Texture(GLuint texture, unsigned int height, unsigned int width, unsigned int rows, unsigned int cols) 
-	: _texture(texture), _height(height), _widht(width), _rows(rows), _cols(cols) {};
+	: _id(texture), _size(glm::vec2(width, height)), _gridSize(cols, rows), _frameSize(_size/_gridSize) {};
 	
-	void use() const
+	void use(unsigned int textureNumber) const
 	{
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, _texture);
+		glActiveTexture(GL_TEXTURE0 + textureNumber);
+		glBindTexture(GL_TEXTURE_2D, _id);
 	}
 
-	GLuint getTextureID() const
+	GLuint getID() const
 	{
-		return _texture;
+		return _id;
 	}
 
-
-	unsigned getHeight() const
+	const glm::vec2& getSize() const
 	{
-		return _height;
+		return _size;
 	}
 
-	unsigned getWidht() const
+	const glm::vec2& getGridSize() const
 	{
-		return _widht;
+		return _gridSize;
 	}
 
-	unsigned getRows() const
+	const glm::vec2& getFrameSize() const
 	{
-		return _rows;
-	}
-
-	unsigned getCols() const
-	{
-		return _cols;
+		return _frameSize;
 	}
 };

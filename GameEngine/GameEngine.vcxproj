@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -131,9 +131,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="animation.cpp" />
     <ClCompile Include="buffer.cpp" />
     <ClCompile Include="renderer.cpp" />
-    <ClCompile Include="renderer2d.cpp" />
     <ClCompile Include="file_reader.cpp" />
     <ClCompile Include="indexbuffer.cpp" />
     <ClCompile Include="main.cpp" />
@@ -143,14 +143,17 @@
     <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="animated_sprite.h" />
+    <ClInclude Include="animation.h" />
     <ClInclude Include="buffer.h" />
+    <ClInclude Include="character.h" />
     <ClInclude Include="renderer.h" />
-    <ClInclude Include="renderer2d.h" />
     <ClInclude Include="file_reader.h" />
     <ClInclude Include="indexbuffer.h" />
-    <ClInclude Include="renderable2d.h" />
     <ClInclude Include="resource_manager.h" />
     <ClInclude Include="shader.h" />
+    <ClInclude Include="sprite.h" />
+    <ClInclude Include="static_sprite.h" />
     <ClInclude Include="texture.h" />
     <ClInclude Include="timer.h" />
     <ClInclude Include="vertexarray.h" />
@@ -160,6 +163,10 @@
   <ItemGroup>
     <None Include="basic.frag" />
     <None Include="basic.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="sheet_hero_dead.png" />
+    <Image Include="sheet_hero_idle.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -5,11 +5,13 @@
 #include <GL/glew.h>
 
 #include "window.h"
-#include "file_reader.h"
 #include "shader.h"
 #include "timer.h"
 #include "renderer.h"
 #include "resource_manager.h"
+#include "animation.h"
+#include "animated_sprite.h"
+#include "character.h"
 
 int main()
 {
@@ -26,28 +28,23 @@ int main()
 	ResourceManager::loadTexture("sheet_hero_idle.png", "idle", 1, 8);
 	ResourceManager::loadTexture("sheet_hero_dead.png", "dead", 1, 8);
 
+	Animation animation = Animation(ResourceManager::getTexture("idle"), glm::vec2(0, 0), glm::vec2(7, 0), 0.8f);
+	Character character = Character(100, 100, 500, 500, animation, "idle");
+
 	Renderer renderer(&shader);
 	Timer timer;
 	Timer frameTimer;
 	unsigned int fps = 0;
 	bool up = true;
 	//game loop
-	Renderable2D sprite = Renderable2D(glm::vec3(100, 100, 0), glm::vec2(100, 100), glm::vec4(0.4f, 0.6f, 0.7f, 1.0f), ResourceManager::getTexture("idle"));
-	Renderable2D sprite2 = Renderable2D(glm::vec3(400, 100, 0), glm::vec2(100, 100), glm::vec4(0.4f, 0.6f, 0.7f, 1.0f), ResourceManager::getTexture("dead"));
 
 	while (!window.isClosed())
 	{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		/*for(int i = 0; i < 80; i++)
-			for(int j = 0; j < 60; j++)
-				renderer.draw(Renderable2D(glm::vec3(i*10, j*10, 0), glm::vec2(9.0f, 9.0f), glm::vec4(0.4f, 0.6f, 0.7f, 1.0f), ResourceManager::getTexture("test")));*/
-		
-		renderer.draw(sprite);
-		renderer.draw(sprite2);
-		sprite.update(frameTimer.time().count());
-		sprite2.update(frameTimer.time().count());
-		frameTimer.restart();
 
+		character.update(frameTimer.time().count());
+		frameTimer.restart();
+		character.draw(renderer);
 
 		//update window state
 		window.update();
