@@ -38,6 +38,9 @@ Window::Window(const char* name, int width, int height)
 	//turning off vsync
 	//glfwSwapInterval(0);
 
+	glEnable(GL_BLEND);// you enable blending function
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
 	//setting mouse and keyboard callbacks;
 	glfwSetMouseButtonCallback(_window, mouseCallback);
 	glfwSetKeyCallback(_window, keyboardCallback);

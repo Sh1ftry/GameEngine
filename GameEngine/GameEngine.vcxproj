@@ -132,6 +132,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="animation.cpp" />
+    <ClCompile Include="animation_manager.cpp" />
     <ClCompile Include="buffer.cpp" />
     <ClCompile Include="renderer.cpp" />
     <ClCompile Include="file_reader.cpp" />
@@ -145,6 +146,7 @@
   <ItemGroup>
     <ClInclude Include="animated_sprite.h" />
     <ClInclude Include="animation.h" />
+    <ClInclude Include="animation_manager.h" />
     <ClInclude Include="buffer.h" />
     <ClInclude Include="character.h" />
     <ClInclude Include="renderer.h" />
