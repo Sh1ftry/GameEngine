@@ -36,7 +36,7 @@ Window::Window(const char* name, int width, int height)
 	glfwSetFramebufferSizeCallback(_window, windowResized);
 
 	//turning off vsync
-	glfwSwapInterval(0);
+	//glfwSwapInterval(0);
 
 	//setting mouse and keyboard callbacks;
 	glfwSetMouseButtonCallback(_window, mouseCallback);

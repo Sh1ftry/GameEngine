@@ -12,6 +12,7 @@
 #include "animation.h"
 #include "animated_sprite.h"
 #include "character.h"
+#include <vector>
 
 int main()
 {
@@ -28,8 +29,7 @@ int main()
 	ResourceManager::loadTexture("sheet_hero_idle.png", "idle", 1, 8);
 	ResourceManager::loadTexture("sheet_hero_dead.png", "dead", 1, 8);
 
-	Animation animation = Animation(ResourceManager::getTexture("idle"), glm::vec2(0, 0), glm::vec2(7, 0), 0.8f);
-	Character character = Character(100, 100, 500, 500, animation, "idle");
+	Character character = Character(100, 120, 100, 157);
 
 	Renderer renderer(&shader);
 	Timer timer;
@@ -42,9 +42,11 @@ int main()
 	{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		character.update(frameTimer.time().count());
+		float ftime = frameTimer.time().count();
 		frameTimer.restart();
-		character.draw(renderer);
+
+		character.update(ftime);
+ 		character.draw(renderer);
 
 		//update window state
 		window.update();

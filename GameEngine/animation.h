@@ -13,6 +13,7 @@ private:
 	float _timeSinceLastAnimationFrame;
 public:
 	Animation(const Texture* texture, const glm::vec2& from, const glm::vec2& to, float animationTime);
+	
 	void update(float dt);
 
 	const Texture* getTexture() const
@@ -25,4 +26,15 @@ public:
 		return _currentFrame * _texture->getFrameSize();
 	}
 
+	const glm::vec2& getCurrentFrame() const
+	{
+		return _currentFrame;
+	}
+
+	void setCurrentFrame(const glm::vec2 frame)
+	{
+		_currentFrame = frame;
+	}
+
+	~Animation() = default;
 };

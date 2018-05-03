@@ -167,6 +167,7 @@
   <ItemGroup>
     <Image Include="sheet_hero_dead.png" />
     <Image Include="sheet_hero_idle.png" />
+    <Image Include="skeleton_walk.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

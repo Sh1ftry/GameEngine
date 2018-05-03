@@ -268,3 +268,7 @@ __pycache__/
 /GameEngine/sheet_hero_idle.png
 /GameEngine/sheet_hero_dead.png
 /GameEngine/attack.png
+/GameEngine/skeleton_walk.png
+/GameEngine/jungle_tileset.png
+/GameEngine/jungle_run.png
+/GameEngine/jungle_jump.png

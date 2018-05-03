@@ -141,5 +141,8 @@
     <Image Include="sheet_hero_idle.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="skeleton_walk.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
