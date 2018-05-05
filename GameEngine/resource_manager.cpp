@@ -3,9 +3,12 @@
 
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
-#include <iostream>
+#include <iostream> 
+
 
 std::map<std::string, Texture*> ResourceManager::_textures;
+std::map<std::string, Font*> ResourceManager::_fonts;
+std::map<std::string, Shader*> ResourceManager::_shaders;
 
 void ResourceManager::loadTexture(const std::string& path, const std::string& name, unsigned int rows, unsigned int cols)
 {
@@ -38,6 +41,26 @@ void ResourceManager::loadTexture(const std::string& path, const std::string& na
 const Texture* ResourceManager::getTexture(const std::string& name)
 {
 	return _textures.at(name);
+}
+
+void ResourceManager::loadFont(const std::string & path, const std::string & name, unsigned int size)
+{
+	_fonts[name] = new Font(path, size);
+}
+
+const Font * ResourceManager::getFont(const std::string & name)
+{
+	return _fonts.at(name);
+}
+
+void ResourceManager::loadShaders(const std::string & vertexPath, const std::string & fragmentPath, const std::string & name)
+{
+	_shaders[name] = new Shader(vertexPath.c_str(), fragmentPath.c_str());
+}
+
+const Shader* ResourceManager::getShader(const std::string & name)
+{
+	return _shaders.at(name);
 }
 
 ResourceManager::~ResourceManager()

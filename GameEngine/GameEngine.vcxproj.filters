@@ -78,6 +78,9 @@
     <ClCompile Include="animation_manager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="font.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="window.h">
@@ -131,12 +134,27 @@
     <ClInclude Include="animation_manager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="tile.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="font.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="text_renderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="basic.vert">
       <Filter>Resource Files\Shaders</Filter>
     </None>
     <None Include="basic.frag">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="text.vert">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="text.frag">
       <Filter>Resource Files\Shaders</Filter>
     </None>
   </ItemGroup>
@@ -148,6 +166,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="skeleton_walk.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="jungle_tileset.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

@@ -54,12 +54,12 @@ public:
 		{
 			_position.y -= _velocity * dt;
 			_velocity += _gravity * dt;
-			if (_position.y < 100)
+			if (_position.y < 80)
 			{
 				_velocity = 0;
 				_animationManager.makeTransition("run_animation", { glm::vec2(1, 0) }, glm::vec2(0, 0));
 				_falling = false;
-				_position.y = 100;
+				_position.y = 80;
 			}
 		}
 

@@ -86,7 +86,7 @@
       <PreprocessorDefinitions>GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>opengl32.lib;glfw3.lib;libglew32d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;libglew32d.lib;freetyped.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -134,6 +134,7 @@
     <ClCompile Include="animation.cpp" />
     <ClCompile Include="animation_manager.cpp" />
     <ClCompile Include="buffer.cpp" />
+    <ClCompile Include="font.cpp" />
     <ClCompile Include="renderer.cpp" />
     <ClCompile Include="file_reader.cpp" />
     <ClCompile Include="indexbuffer.cpp" />
@@ -149,6 +150,7 @@
     <ClInclude Include="animation_manager.h" />
     <ClInclude Include="buffer.h" />
     <ClInclude Include="character.h" />
+    <ClInclude Include="font.h" />
     <ClInclude Include="renderer.h" />
     <ClInclude Include="file_reader.h" />
     <ClInclude Include="indexbuffer.h" />
@@ -157,6 +159,8 @@
     <ClInclude Include="sprite.h" />
     <ClInclude Include="static_sprite.h" />
     <ClInclude Include="texture.h" />
+    <ClInclude Include="text_renderer.h" />
+    <ClInclude Include="tile.h" />
     <ClInclude Include="timer.h" />
     <ClInclude Include="vertexarray.h" />
     <ClInclude Include="vertex_data.h" />
@@ -165,8 +169,11 @@
   <ItemGroup>
     <None Include="basic.frag" />
     <None Include="basic.vert" />
+    <None Include="text.frag" />
+    <None Include="text.vert" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="jungle_tileset.png" />
     <Image Include="sheet_hero_dead.png" />
     <Image Include="sheet_hero_idle.png" />
     <Image Include="skeleton_walk.png" />
