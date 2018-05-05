@@ -2,6 +2,7 @@
 #include "animated_sprite.h"
 #include "renderer.h"
 #include "resource_manager.h"
+#include <irrKlang/irrKlang.h>
 
 class Character : public AnimatedSprite
 {
@@ -11,10 +12,15 @@ private:
 	bool _jumping;
 	bool _falling;
 	float _velocity;
+	float _time;
+	float _soundTime;
+	irrklang::ISoundEngine* _soundEngine;
 public:
-	Character(float x, float y, float width, float height)
-		: AnimatedSprite(glm::vec3(x, y, 0.0f), glm::vec2(width, height)), _health(0)
+	Character(float x, float y, float width, float height, irrklang::ISoundEngine* soundEngine)
+		: AnimatedSprite(glm::vec3(x, y, 0.0f), glm::vec2(width, height)), _health(0), _soundEngine(soundEngine)
 	{
+		_time = 0.0f;
+		_soundTime = 0.0f;
 		_jumping = false;
 		_falling = false;
 		_gravity = 900;
@@ -29,7 +35,6 @@ public:
 
 	void update(float dt) override
 	{
-
 		_animationManager.updateAnimation(dt);
 		_position.x += 400 * dt;
 		
@@ -63,7 +68,22 @@ public:
 			}
 		}
 
+		if (!_jumping && !_falling)
+		{
+			if(_soundTime > 0.3f)
+			{
+				_soundTime = 0.0f;
+				_soundEngine->play2D("Fantozzi-SandL2.flac", GL_FALSE);
+			}
+		}
+
 		if (_position.x > 800) _position.x = -100;
+		_time += dt;
+		_soundTime += dt;
+		if(_time > 0.6f)
+		{
+			_time = 0.0f;
+		}
 	}
 
 	void draw(Renderer renderer) override

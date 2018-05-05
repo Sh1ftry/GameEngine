@@ -10,6 +10,9 @@
 #include <vector>
 #include "tile.h"
 #include <sstream>
+#include <irrKlang/irrKlang.h>
+
+irrklang::ISoundEngine *SoundEngine = irrklang::createIrrKlangDevice();
 
 int main()
 {
@@ -26,7 +29,7 @@ int main()
 	ResourceManager::loadFont("ARCADECLASSIC.TTF", "Arcade20", 20);
 
 
-	Character character = Character(100, 120, 100, 157);
+	Character character = Character(100, 120, 100, 157, SoundEngine);
 	std::vector<Tile*> tiles;
 
 	Tile* bg1 = new Tile(glm::vec3(0, 0, -0.9f), glm::vec2(800, 600), ResourceManager::getTexture("bg1"));
@@ -45,8 +48,8 @@ int main()
 	Renderer renderer(ResourceManager::getShader("basic"));
 	TextRenderer textRenderer(ResourceManager::getShader("text"));
 	renderer.setProjection(glm::ortho(0.f, 800.f, 0.f, 600.f, -1.0f, 1.0f));
-	textRenderer.setProjection(glm::ortho(0.f, 800.f, 0.f, 600.f, -1.0f, 1.0f));
-	
+	textRenderer.setProjection(glm::ortho(0.f, 800.f, 0.f, 600.f, -1.0f, 1.0f));;
+
 	Timer timer;
 	Timer frameTimer;
 	unsigned int fps = 0;
@@ -54,6 +57,8 @@ int main()
 	//game loop
 
 	unsigned int fps_to_show = 0;
+
+	SoundEngine->play2D("little town - orchestral.ogg", GL_TRUE);
 
 	while (!window.isClosed())
 	{
