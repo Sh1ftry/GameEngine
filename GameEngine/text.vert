@@ -9,12 +9,8 @@ uniform mat4 projection;
 uniform mat4 view = mat4(1.0f);
 uniform mat4 model = mat4(1.0f);
 
-uniform vec2 tPos;
-uniform vec2 tSize;
-
 void main()
 {
 	gl_Position = projection * view * model * position;
-	vec2 normalTexPos = texturePosition * tSize;
-	texPos = normalTexPos + tPos;
+	texPos = texturePosition;
 }

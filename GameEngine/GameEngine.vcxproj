@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -86,7 +86,7 @@
       <PreprocessorDefinitions>GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>opengl32.lib;glfw3.lib;libglew32d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;libglew32d.lib;freetyped.lib;irrKlang.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -131,22 +131,36 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="animation.cpp" />
+    <ClCompile Include="animation_manager.cpp" />
     <ClCompile Include="buffer.cpp" />
-    <ClCompile Include="renderer2d.cpp" />
+    <ClCompile Include="font.cpp" />
+    <ClCompile Include="renderer.cpp" />
     <ClCompile Include="file_reader.cpp" />
     <ClCompile Include="indexbuffer.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="resource_manager.cpp" />
     <ClCompile Include="shader.cpp" />
     <ClCompile Include="vertexarray.cpp" />
     <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="animated_sprite.h" />
+    <ClInclude Include="animation.h" />
+    <ClInclude Include="animation_manager.h" />
     <ClInclude Include="buffer.h" />
-    <ClInclude Include="renderer2d.h" />
+    <ClInclude Include="character.h" />
+    <ClInclude Include="font.h" />
+    <ClInclude Include="renderer.h" />
     <ClInclude Include="file_reader.h" />
     <ClInclude Include="indexbuffer.h" />
-    <ClInclude Include="renderable2d.h" />
+    <ClInclude Include="resource_manager.h" />
     <ClInclude Include="shader.h" />
+    <ClInclude Include="sprite.h" />
+    <ClInclude Include="static_sprite.h" />
+    <ClInclude Include="texture.h" />
+    <ClInclude Include="text_renderer.h" />
+    <ClInclude Include="tile.h" />
     <ClInclude Include="timer.h" />
     <ClInclude Include="vertexarray.h" />
     <ClInclude Include="vertex_data.h" />
@@ -155,6 +169,14 @@
   <ItemGroup>
     <None Include="basic.frag" />
     <None Include="basic.vert" />
+    <None Include="text.frag" />
+    <None Include="text.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="jungle_tileset.png" />
+    <Image Include="sheet_hero_dead.png" />
+    <Image Include="sheet_hero_idle.png" />
+    <Image Include="skeleton_walk.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

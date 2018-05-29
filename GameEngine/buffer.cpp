@@ -1,4 +1,5 @@
 #include "buffer.h"
+#include <GL/glew.h>
 
 Buffer::Buffer(GLfloat * data, GLsizei count, GLuint componentCount)
 	: _componentCount(componentCount)

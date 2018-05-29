@@ -9,6 +9,6 @@ uniform sampler2D tex;
 
 void main()
 {
-	//float intensity = 1.0f / length(fs_in.position.xy - light_position) * 50;
-	color = texture(tex, texPos);
+	vec4 sampled = vec4(1.0f, 1.0f, 1.0f, texture(tex, texPos).r);
+    color = sampled * col;
 }

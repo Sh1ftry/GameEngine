@@ -1,5 +1,6 @@
 #include "window.h"
 #include <iostream>
+#include <GL/glew.h>
 
 void windowResized(GLFWwindow* window, int height, int width);
 void keyboardCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
@@ -37,6 +38,9 @@ Window::Window(const char* name, int width, int height)
 
 	//turning off vsync
 	glfwSwapInterval(0);
+
+	glEnable(GL_BLEND);// you enable blending function
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	//setting mouse and keyboard callbacks;
 	glfwSetMouseButtonCallback(_window, mouseCallback);
@@ -78,7 +82,7 @@ void Window::update()
 	GLenum err;
 	while ((err = glGetError()) != GL_NO_ERROR)
 	{
-		std::cout << "OpenGL error: " << err << std::endl;
+		//std::cout << "OpenGL error: " << err << std::endl;
 	}
 }
 
