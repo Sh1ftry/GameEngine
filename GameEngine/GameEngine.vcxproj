@@ -151,6 +151,7 @@
     <ClInclude Include="buffer.h" />
     <ClInclude Include="character.h" />
     <ClInclude Include="font.h" />
+    <ClInclude Include="keyboard_listener.h" />
     <ClInclude Include="renderer.h" />
     <ClInclude Include="file_reader.h" />
     <ClInclude Include="indexbuffer.h" />

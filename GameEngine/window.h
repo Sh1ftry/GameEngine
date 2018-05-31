@@ -1,6 +1,8 @@
 #pragma once
-#include <GL\glew.h>
+#include <GL/glew.h>
 #include <GLFW\glfw3.h>
+#include <unordered_map>
+#include "keyboard_listener.h"
 
 /*
 *	@brief Max mouse buttons
@@ -40,6 +42,7 @@ public:
 	*	@brief Destructor terminates GLFW
 	*/
 	~Window();
+
 	/*
 	*	@brief Updating window state
 	*/

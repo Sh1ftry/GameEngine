@@ -4,7 +4,7 @@ void AnimationManager::makeTransition(const std::string& name, const std::vector
 {
 	if(!_currentAnimation)
 	{
-		throw std::logic_error("No active animation set!");
+		throw std::logic_error("ERROR::ANIMATION_MANAGER -> No active animation set!");
 	}
 	
 	_nextAnimation = _animations.at(name);
@@ -25,7 +25,7 @@ void AnimationManager::updateAnimation(float dt)
 {
 	if (!_currentAnimation)
 	{
-		throw std::logic_error("No active animation set!");
+		throw std::logic_error("ERROR::ANIMATION_MANAGER -> No active animation set!");
 	}
 	_currentAnimation->update(dt);
 	if (_nextAnimation)

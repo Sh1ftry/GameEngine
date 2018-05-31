@@ -29,18 +29,18 @@ int main()
 	ResourceManager::loadFont("ARCADECLASSIC.TTF", "Arcade20", 20);
 
 
-	Character character = Character(100, 120, 100, 157, SoundEngine);
+	Character character = Character(100, 80, 100, 157, SoundEngine);
 	std::vector<Tile*> tiles;
 
 	Tile* bg1 = new Tile(glm::vec3(0, 0, -0.9f), glm::vec2(800, 600), ResourceManager::getTexture("bg1"));
-	Tile* bg2 = new Tile(glm::vec3(0, 0, -0.9f), glm::vec2(800, 600), ResourceManager::getTexture("bg2"));
+	Tile* bg2 = new Tile(glm::vec3(0, 0, -0.8f), glm::vec2(800, 600), ResourceManager::getTexture("bg2"));
 	tiles.push_back(bg1);
 	tiles.push_back(bg2);
 
 	for(int i = 0; i < 16; i++)
 	{
-		Tile* newTile = new Tile(glm::vec3(i * 50, 0, -0.9f), glm::vec2(50, 50), ResourceManager::getTexture("jungle_tileset"), glm::vec2(1, 16));
-		Tile* newTile2= new Tile(glm::vec3(i * 50, 50, -0.9f), glm::vec2(50, 50), ResourceManager::getTexture("jungle_tileset"), glm::vec2(1, 17));
+		Tile* newTile = new Tile(glm::vec3(i * 50, 0, -0.7f), glm::vec2(50, 50), ResourceManager::getTexture("jungle_tileset"), glm::vec2(1, 16));
+		Tile* newTile2= new Tile(glm::vec3(i * 50, 50, -0.7f), glm::vec2(50, 50), ResourceManager::getTexture("jungle_tileset"), glm::vec2(1, 17));
 		tiles.push_back(newTile);
 		tiles.push_back(newTile2);
 	}
@@ -58,11 +58,14 @@ int main()
 
 	unsigned int fps_to_show = 0;
 
-	SoundEngine->play2D("little town - orchestral.ogg", GL_TRUE);
+	SoundEngine->play2D("boeing.mp3", GL_TRUE);
+
+	timer.restart();
+	frameTimer.restart();
 
 	while (!window.isClosed())
 	{
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT);
 
 		float ftime = static_cast<float>(frameTimer.time().count());
 		frameTimer.restart();
@@ -75,10 +78,10 @@ int main()
 			tile->draw(renderer);
 		}
 
+		character.handleInput(window);
 		character.update(ftime);
 		character.draw(renderer);
-
-		textRenderer.drawText(sfps.str(), ResourceManager::getFont("Arcade20"), glm::vec3(20, 570, 0.0f), glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
+		textRenderer.drawText(sfps.str(), ResourceManager::getFont("Arcade20"), glm::vec3(20, 570, 0.9f), glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
 
 		//update window state
 		window.update();

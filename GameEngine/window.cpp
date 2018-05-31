@@ -1,6 +1,7 @@
 #include "window.h"
 #include <iostream>
 #include <GL/glew.h>
+#include <GLFW/glfw3.h>
 
 void windowResized(GLFWwindow* window, int height, int width);
 void keyboardCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
@@ -14,8 +15,7 @@ Window::Window(const char* name, int width, int height)
 	//glfw iunitalization
 	if (!glfwInit())
 	{
-		std::cout << "Could not initialize GLFW!";
-		return;
+		throw std::runtime_error("ERROR::GLFW -> Failed to initialize!");
 	}
 
 	//window creation
@@ -23,8 +23,7 @@ Window::Window(const char* name, int width, int height)
 	if (!_window)
 	{
 		glfwTerminate();
-		std::cout << "Could not create window!";
-		return;
+		throw std::runtime_error("ERROR::GLFW -> Failed to create window!");
 	}
 
 	//registering opengl context to window
@@ -37,7 +36,7 @@ Window::Window(const char* name, int width, int height)
 	glfwSetFramebufferSizeCallback(_window, windowResized);
 
 	//turning off vsync
-	glfwSwapInterval(0);
+	//glfwSwapInterval(60);
 
 	glEnable(GL_BLEND);// you enable blending function
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -50,11 +49,8 @@ Window::Window(const char* name, int width, int height)
 	if (glewInit() != GLEW_OK)
 	{
 		glfwTerminate();
-		std::cout << "Could not initialize GLEW!" << std::endl;
+		throw std::runtime_error("ERROR:GLEW -> Failed to initialize!");
 	}
-
-	std::cout << "OpenGL " << glGetString(GL_VERSION) << " is up and running!" << std::endl;
-
 }
 
 Window::~Window()
@@ -91,10 +87,6 @@ void Window::keyboardKeyPressed(unsigned int code)
 	if (code < MAX_KEYS)
 	{
 		_keyboardKeys[code] = true;
-	}
-	else
-	{
-		return;
 	}
 }
 

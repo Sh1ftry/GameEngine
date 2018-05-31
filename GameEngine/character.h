@@ -2,7 +2,9 @@
 #include "animated_sprite.h"
 #include "renderer.h"
 #include "resource_manager.h"
+#include "window.h"
 #include <irrKlang/irrKlang.h>
+#include <GLFW/glfw3.h>
 
 class Character : public AnimatedSprite
 {
@@ -33,17 +35,30 @@ public:
 		_animationManager.addAnimation("jump_animation", new Animation(jungleJumpTexture, glm::vec2(0, 0), glm::vec2(1, 0), 0.3f));
 	};
 
+	void jump()
+	{
+		if(!_jumping && !_falling)
+		{
+			_jumping = true;
+			_velocity = 300;
+			_animationManager.makeTransition("jump_animation", { glm::vec2(3, 0), glm::vec2(7, 0) }, glm::vec2(0, 0));
+		}
+	}
+
+	void handleInput(const Window& window)
+	{
+		if (window.isKeyboardKeyPressed(GLFW_KEY_SPACE)) jump();
+	}
+
 	void update(float dt) override
 	{
 		_animationManager.updateAnimation(dt);
 		_position.x += 400 * dt;
 		
-		if (_position.x >= 100 && _position.x <= 130)
+		/*if (_position.x >= 100 && _position.x <= 130)
 		{
-			_velocity = 300;
-			_jumping = true;
-			_animationManager.makeTransition("jump_animation", { glm::vec2(3, 0), glm::vec2(7, 0) }, glm::vec2(0, 0));
-		}
+			jump();
+		}*/
 
 		if (_jumping)
 		{
@@ -73,7 +88,7 @@ public:
 			if(_soundTime > 0.3f)
 			{
 				_soundTime = 0.0f;
-				_soundEngine->play2D("Fantozzi-SandL2.flac", GL_FALSE);
+				_soundEngine->play2D("iceball.wav", GL_FALSE);
 			}
 		}
 
@@ -90,6 +105,11 @@ public:
 	{
 		renderer.draw(_position, _size, *_animationManager.getCurrentAnimationTexture(),
 			_animationManager.getCurrentTextureFramePosition(), _animationManager.getCurrentAnimationTexture()->getFrameSize());
+	}
+
+	const glm::vec2& getPosition()
+	{
+		return _position;
 	}
 
 	~Character() = default;
