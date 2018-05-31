@@ -2,9 +2,9 @@
 
 #include <string>
 #include <map>
-#include "texture.h"
+#include "../Graphics/texture.h"
 #include "font.h"
-#include "shader.h"
+#include "../Graphics/shader.h"
 
 class ResourceManager
 {

@@ -13,151 +13,98 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\Graphics">
-      <UniqueIdentifier>{0c37ca18-9904-48a5-b4c4-5d94d0d74637}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Graphics">
-      <UniqueIdentifier>{842823c5-59c6-485f-9633-005169306c2a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Input">
-      <UniqueIdentifier>{246f5ba4-72e2-42c9-aab4-8d67338c65ee}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Utilities">
-      <UniqueIdentifier>{1a195043-a2bf-4c67-ad40-65034095eb12}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Utilities">
-      <UniqueIdentifier>{db62eeb7-2ca5-4b78-9ded-927dcbe2b48a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resource Files\Shaders">
-      <UniqueIdentifier>{39c7ced6-9e47-4b61-89a4-ae5d84d92ed0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Graphics\Buffer">
-      <UniqueIdentifier>{6ff0a011-7276-4e19-b96b-522bf8c659e1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Graphics\Renderables">
-      <UniqueIdentifier>{81c9f4eb-5c47-4e21-84e0-fb92f9ea372f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Graphics\Renderables">
-      <UniqueIdentifier>{7b0cbaa0-e792-4806-bf7e-132ae6db258b}</UniqueIdentifier>
-    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="character.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\file_reader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\font.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\resource_manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\timer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\animated_sprite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\animation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\animation_manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\renderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\sprite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\static_sprite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\text_renderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\window.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="window.cpp">
-      <Filter>Source Files\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="file_reader.cpp">
-      <Filter>Source Files\Utilities</Filter>
-    </ClCompile>
-    <ClCompile Include="shader.cpp">
-      <Filter>Source Files\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="buffer.cpp">
-      <Filter>Source Files\Graphics\Buffer</Filter>
-    </ClCompile>
-    <ClCompile Include="indexbuffer.cpp">
-      <Filter>Source Files\Graphics\Buffer</Filter>
-    </ClCompile>
-    <ClCompile Include="vertexarray.cpp">
-      <Filter>Source Files\Graphics\Buffer</Filter>
-    </ClCompile>
-    <ClCompile Include="renderer.cpp">
-      <Filter>Source Files\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="resource_manager.cpp">
+    <ClCompile Include="Utilities\file_reader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="animation.cpp">
+    <ClCompile Include="Utilities\font.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="animation_manager.cpp">
+    <ClCompile Include="Utilities\resource_manager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="font.cpp">
+    <ClCompile Include="Graphics\animation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\animation_manager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\renderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\shader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="window.h">
-      <Filter>Header Files\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="file_reader.h">
-      <Filter>Header Files\Utilities</Filter>
-    </ClInclude>
-    <ClInclude Include="shader.h">
-      <Filter>Header Files\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="vertex_data.h">
-      <Filter>Header Files\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="timer.h">
-      <Filter>Header Files\Utilities</Filter>
-    </ClInclude>
-    <ClInclude Include="renderer.h">
-      <Filter>Header Files\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="resource_manager.h">
-      <Filter>Header Files\Utilities</Filter>
-    </ClInclude>
-    <ClInclude Include="texture.h">
-      <Filter>Header Files\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="animated_sprite.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="animation.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="sprite.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="static_sprite.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="character.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="animation_manager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="tile.h">
-      <Filter>Header Files\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="font.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="text_renderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="basic.vert">
-      <Filter>Resource Files\Shaders</Filter>
-    </None>
-    <None Include="basic.frag">
-      <Filter>Resource Files\Shaders</Filter>
-    </None>
-    <None Include="text.vert">
-      <Filter>Resource Files\Shaders</Filter>
-    </None>
-    <None Include="text.frag">
-      <Filter>Resource Files\Shaders</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="sheet_hero_dead.png">
+    <None Include="Resources\basic.frag">
       <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="sheet_hero_idle.png">
+    </None>
+    <None Include="Resources\basic.vert">
       <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="skeleton_walk.png">
+    </None>
+    <None Include="Resources\text.frag">
       <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="jungle_tileset.png">
+    </None>
+    <None Include="Resources\text.vert">
       <Filter>Resource Files</Filter>
-    </Image>
+    </None>
   </ItemGroup>
 </Project>

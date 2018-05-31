@@ -2,7 +2,7 @@
 #include <iostream>
 #include <glm/gtc/type_ptr.hpp>
 #include "shader.h"
-#include "file_reader.h"
+#include "../Utilities/file_reader.h"
 #include <GL/glew.h>
 
 Shader::Shader(const char * vert, const char * frag)

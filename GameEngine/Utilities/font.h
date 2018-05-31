@@ -1,7 +1,7 @@
 #pragma once
 #include <map>
 #include <Gl/glew.h>
-#include "texture.h"
+#include "../Graphics/texture.h"
 #include <iostream>
 #include <string>
 

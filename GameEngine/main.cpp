@@ -20,8 +20,8 @@ int main()
 	Window window("Window", 800, 600);
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 
-	ResourceManager::loadShaders("Resources/text.vert", "text.frag", "text");
-	ResourceManager::loadShaders("Resources/basic.vert", "basic.frag", "basic");
+	ResourceManager::loadShaders("Resources/text.vert", "Resources/text.frag", "text");
+	ResourceManager::loadShaders("Resources/basic.vert", "Resources/basic.frag", "basic");
 
 	ResourceManager::loadTexture("Resources/jungle_tileset.png", "jungle_tileset", 19, 39);
 	ResourceManager::loadTexture("Resources/plx-1.png", "bg1", 1, 1);
@@ -58,7 +58,7 @@ int main()
 
 	unsigned int fps_to_show = 0;
 
-	SoundEngine->play2D("little town - orchestral.ogg", GL_TRUE);
+	SoundEngine->play2D("Resources/little town - orchestral.ogg", GL_TRUE);
 
 	while (!window.isClosed())
 	{

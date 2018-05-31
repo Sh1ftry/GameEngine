@@ -1,7 +1,7 @@
 #pragma once
-#include "animated_sprite.h"
-#include "renderer.h"
-#include "resource_manager.h"
+#include "Graphics/animated_sprite.h"
+#include "Graphics/renderer.h"
+#include "Utilities/resource_manager.h"
 #include <irrKlang/irrKlang.h>
 
 class Character : public AnimatedSprite
@@ -25,8 +25,8 @@ public:
 		_falling = false;
 		_gravity = 900;
 		_velocity = 0;
-		ResourceManager::loadTexture("jungle_run.png", "jungle_run", 1, 8);
-		ResourceManager::loadTexture("jungle_jump.png", "jungle_jump", 1, 2);
+		ResourceManager::loadTexture("Resources/jungle_run.png", "jungle_run", 1, 8);
+		ResourceManager::loadTexture("Resources/jungle_jump.png", "jungle_jump", 1, 2);
 		const Texture* jungleRunTexture = ResourceManager::getTexture("jungle_run");
 		const Texture* jungleJumpTexture = ResourceManager::getTexture("jungle_jump");
 		_animationManager.addAnimation("run_animation", new Animation(jungleRunTexture, glm::vec2(0, 0), glm::vec2(7, 0), 0.6f));
@@ -73,7 +73,7 @@ public:
 			if(_soundTime > 0.3f)
 			{
 				_soundTime = 0.0f;
-				_soundEngine->play2D("Fantozzi-SandL2.flac", GL_FALSE);
+				_soundEngine->play2D("Resources/Fantozzi-SandL2.flac", GL_FALSE);
 			}
 		}
 

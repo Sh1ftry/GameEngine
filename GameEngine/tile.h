@@ -1,6 +1,6 @@
 #pragma once
-#include "static_sprite.h"
-#include "renderer.h"
+#include "Graphics/static_sprite.h"
+#include "Graphics/renderer.h"
 
 class Tile : public StaticSprite
 {

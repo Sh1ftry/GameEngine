@@ -18,6 +18,41 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="character.h" />
+    <ClInclude Include="Graphics\animated_sprite.h" />
+    <ClInclude Include="Graphics\animation.h" />
+    <ClInclude Include="Graphics\animation_manager.h" />
+    <ClInclude Include="Graphics\renderer.h" />
+    <ClInclude Include="Graphics\shader.h" />
+    <ClInclude Include="Graphics\sprite.h" />
+    <ClInclude Include="Graphics\static_sprite.h" />
+    <ClInclude Include="Graphics\texture.h" />
+    <ClInclude Include="Graphics\text_renderer.h" />
+    <ClInclude Include="Graphics\window.h" />
+    <ClInclude Include="tile.h" />
+    <ClInclude Include="Utilities\file_reader.h" />
+    <ClInclude Include="Utilities\font.h" />
+    <ClInclude Include="Utilities\resource_manager.h" />
+    <ClInclude Include="Utilities\timer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Graphics\animation.cpp" />
+    <ClCompile Include="Graphics\animation_manager.cpp" />
+    <ClCompile Include="Graphics\renderer.cpp" />
+    <ClCompile Include="Graphics\shader.cpp" />
+    <ClCompile Include="Graphics\window.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Utilities\file_reader.cpp" />
+    <ClCompile Include="Utilities\font.cpp" />
+    <ClCompile Include="Utilities\resource_manager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\basic.frag" />
+    <None Include="Resources\basic.vert" />
+    <None Include="Resources\text.frag" />
+    <None Include="Resources\text.vert" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{F07559FD-0F24-45BC-A177-A32231726858}</ProjectGuid>
@@ -130,51 +165,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="animation.cpp" />
-    <ClCompile Include="animation_manager.cpp" />
-    <ClCompile Include="buffer.cpp" />
-    <ClCompile Include="font.cpp" />
-    <ClCompile Include="renderer.cpp" />
-    <ClCompile Include="file_reader.cpp" />
-    <ClCompile Include="indexbuffer.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="resource_manager.cpp" />
-    <ClCompile Include="shader.cpp" />
-    <ClCompile Include="vertexarray.cpp" />
-    <ClCompile Include="window.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="animated_sprite.h" />
-    <ClInclude Include="animation.h" />
-    <ClInclude Include="animation_manager.h" />
-    <ClInclude Include="character.h" />
-    <ClInclude Include="font.h" />
-    <ClInclude Include="renderer.h" />
-    <ClInclude Include="file_reader.h" />
-    <ClInclude Include="resource_manager.h" />
-    <ClInclude Include="shader.h" />
-    <ClInclude Include="sprite.h" />
-    <ClInclude Include="static_sprite.h" />
-    <ClInclude Include="texture.h" />
-    <ClInclude Include="text_renderer.h" />
-    <ClInclude Include="tile.h" />
-    <ClInclude Include="timer.h" />
-    <ClInclude Include="vertex_data.h" />
-    <ClInclude Include="window.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="basic.frag" />
-    <None Include="basic.vert" />
-    <None Include="text.frag" />
-    <None Include="text.vert" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="jungle_tileset.png" />
-    <Image Include="sheet_hero_dead.png" />
-    <Image Include="sheet_hero_idle.png" />
-    <Image Include="skeleton_walk.png" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

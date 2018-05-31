@@ -1,6 +1,5 @@
 #include "renderer.h"
 #include <glm/gtc/matrix_transform.hpp>
-#include "character.h"
 
 Renderer::Renderer(const Shader* shader)
 	: _shader(shader)
