@@ -29,8 +29,9 @@ private:
 	bool _keyboardKeys[MAX_KEYS];
 
 public:
+	Window() = default;
 	/*
-	*	@brief Costructor initializes GLFW and creates window
+	*	@brief Calls init method
 	*	@param[in] name Title of the window
 	*	@param[in] width Width of the window
 	*	@param[in] height Height of the window
@@ -40,6 +41,15 @@ public:
 	*	@brief Destructor terminates GLFW
 	*/
 	~Window();
+
+	/**
+	 * @brief Initializes GLFW and creates window
+	*  @param[in] name Title of the window
+	*  @param[in] width Width of the window
+	*  @param[in] height Height of the window 
+	 */
+	void init(const char* name, int width, int height);
+
 	/*
 	*	@brief Updating window state
 	*/

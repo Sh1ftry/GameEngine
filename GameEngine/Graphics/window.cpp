@@ -8,9 +8,30 @@ void mouseCallback(GLFWwindow* window, int button, int action, int modes);
 void mouseCursorCallback(GLFWwindow* window, double xpos, double ypos);
 
 Window::Window(const char* name, int width, int height) 
-	: _name(name), _width(width), _height(height)
 {
+	init(name, width, height);
+}
 
+Window::~Window()
+{
+	glfwTerminate();
+}
+
+void windowResized(GLFWwindow* window, int width, int height)
+{
+	//its safe to assume that 'glfwGetWindowUserPointer' will
+	//return pointer to valid Window object, because the object
+	//exists as long as the GLFW is working
+	Window* win = static_cast<Window*>(glfwGetWindowUserPointer(window));
+	win->setWidthAndHeight(width, height);
+	std::cout << width << "x" << height << std::endl;
+}
+
+void Window::init(const char * name, int width, int height)
+{
+	_name = name;
+	_width = width;
+	_height = height;
 	//glfw iunitalization
 	if (!glfwInit())
 	{
@@ -54,22 +75,6 @@ Window::Window(const char* name, int width, int height)
 	}
 
 	std::cout << "OpenGL " << glGetString(GL_VERSION) << " is up and running!" << std::endl;
-
-}
-
-Window::~Window()
-{
-	glfwTerminate();
-}
-
-void windowResized(GLFWwindow* window, int width, int height)
-{
-	//its safe to assume that 'glfwGetWindowUserPointer' will
-	//return pointer to valid Window object, because the object
-	//exists as long as the GLFW is working
-	Window* win = static_cast<Window*>(glfwGetWindowUserPointer(window));
-	win->setWidthAndHeight(width, height);
-	std::cout << width << "x" << height << std::endl;
 }
 
 void Window::update()
