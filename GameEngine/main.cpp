@@ -2,10 +2,10 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <GL/glew.h>
 
-#include "window.h"
-#include "timer.h"
-#include "renderer.h"
-#include "resource_manager.h"
+#include "Graphics/window.h"
+#include "Utilities/timer.h"
+#include "Graphics/renderer.h"
+#include "Utilities/resource_manager.h"
 #include "character.h"
 #include <vector>
 #include "tile.h"
@@ -20,13 +20,13 @@ int main()
 	Window window("Window", 800, 600);
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 
-	ResourceManager::loadShaders("text.vert", "text.frag", "text");
-	ResourceManager::loadShaders("basic.vert", "basic.frag", "basic");
+	ResourceManager::loadShaders("Resources/text.vert", "text.frag", "text");
+	ResourceManager::loadShaders("Resources/basic.vert", "basic.frag", "basic");
 
-	ResourceManager::loadTexture("jungle_tileset.png", "jungle_tileset", 19, 39);
-	ResourceManager::loadTexture("plx-1.png", "bg1", 1, 1);
-	ResourceManager::loadTexture("plx-4.png", "bg2", 1, 1);
-	ResourceManager::loadFont("ARCADECLASSIC.TTF", "Arcade20", 20);
+	ResourceManager::loadTexture("Resources/jungle_tileset.png", "jungle_tileset", 19, 39);
+	ResourceManager::loadTexture("Resources/plx-1.png", "bg1", 1, 1);
+	ResourceManager::loadTexture("Resources/plx-4.png", "bg2", 1, 1);
+	ResourceManager::loadFont("Resources/ARCADECLASSIC.TTF", "Arcade20", 20);
 
 
 	Character character = Character(100, 120, 100, 157, SoundEngine);

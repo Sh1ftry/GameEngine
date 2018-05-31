@@ -148,12 +148,10 @@
     <ClInclude Include="animated_sprite.h" />
     <ClInclude Include="animation.h" />
     <ClInclude Include="animation_manager.h" />
-    <ClInclude Include="buffer.h" />
     <ClInclude Include="character.h" />
     <ClInclude Include="font.h" />
     <ClInclude Include="renderer.h" />
     <ClInclude Include="file_reader.h" />
-    <ClInclude Include="indexbuffer.h" />
     <ClInclude Include="resource_manager.h" />
     <ClInclude Include="shader.h" />
     <ClInclude Include="sprite.h" />
@@ -162,7 +160,6 @@
     <ClInclude Include="text_renderer.h" />
     <ClInclude Include="tile.h" />
     <ClInclude Include="timer.h" />
-    <ClInclude Include="vertexarray.h" />
     <ClInclude Include="vertex_data.h" />
     <ClInclude Include="window.h" />
   </ItemGroup>
