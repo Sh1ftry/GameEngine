@@ -1,5 +1,23 @@
 #include "animation_manager.h"
 
+const Texture* AnimationManager::getCurrentAnimationTexture() const
+{
+	if (!_currentAnimation)
+	{
+		throw std::logic_error("No active animation set!");
+	}
+	return _currentAnimation->getTexture();
+}
+
+glm::vec2 AnimationManager::getCurrentTextureFramePosition() const
+{
+	if (!_currentAnimation)
+	{
+		throw std::logic_error("No active animation set!");
+	}
+	return _currentAnimation->getTextureFramePosition();
+}
+
 void AnimationManager::makeTransition(const std::string& name, const std::vector<glm::vec2>& changeAt, const glm::vec2& startAt)
 {
 	if(!_currentAnimation)

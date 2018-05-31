@@ -12,12 +12,14 @@ Shader::Shader(const char * vert, const char * frag)
 	
 	if (!FileReader::readFile(vert, vertexSource))
 	{
-		std::cout << "Vertex shader not found!" << std::endl;
+		throw std::runtime_error("Shader '" + std::string(vert) + "' not found!");
+		//std::cout << "Vertex shader not found!" << std::endl;
 	}
 
 	if(!FileReader::readFile(frag, fragmentSource))
 	{
-		std::cout << "Fragment shader not found!" << std::endl;
+		throw std::runtime_error("Shader '" + std::string(frag) + "' not found!");
+		//std::cout << "Fragment shader not found!" << std::endl;
 	}
 
 	//creating program for shaders
@@ -37,10 +39,10 @@ Shader::Shader(const char * vert, const char * frag)
 	if (resultCode == GL_FALSE)
 	{
 		glGetShaderInfoLog(vertexID, 1024, 0, resultBuffer);
-		std::cout << "Could not compile vertex shader\n" << resultBuffer;
+		//std::cout << "Could not compile vertex shader\n" << resultBuffer;
 		glDeleteShader(vertexID);
 		glDeleteShader(fragmentID);
-		return;
+		throw std::runtime_error("Could not compile vertex shader\n" + std::string(resultBuffer));
 	}
 
 	//fragment creation 
@@ -56,7 +58,8 @@ Shader::Shader(const char * vert, const char * frag)
 		std::cout << "Could not compile fragment shader\n" << resultBuffer;
 		glDeleteShader(vertexID);
 		glDeleteShader(fragmentID);
-		return;
+		throw std::runtime_error("Could not compile fragment shader\n" + std::string(resultBuffer));
+
 	}
 
 	//attaching and linking shaders to program

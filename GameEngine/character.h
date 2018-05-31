@@ -11,7 +11,10 @@ private:
 	float _gravity;
 	bool _jumping;
 	bool _falling;
+	bool _left;
+	bool _stopped;
 	float _velocity;
+	float _runningVelocity;
 	float _time;
 	float _soundTime;
 	irrklang::ISoundEngine* _soundEngine;
@@ -23,27 +26,78 @@ public:
 		_soundTime = 0.0f;
 		_jumping = false;
 		_falling = false;
+		_left = false;
+		_stopped = true;
 		_gravity = 900;
 		_velocity = 0;
+		_runningVelocity = 0;
 		ResourceManager::loadTexture("Resources/jungle_run.png", "jungle_run", 1, 8);
 		ResourceManager::loadTexture("Resources/jungle_jump.png", "jungle_jump", 1, 2);
+		ResourceManager::loadTexture("Resources/jungle_idle.png", "jungle_idle", 1, 12);
 		const Texture* jungleRunTexture = ResourceManager::getTexture("jungle_run");
 		const Texture* jungleJumpTexture = ResourceManager::getTexture("jungle_jump");
+		const Texture* jungleIdleTexture = ResourceManager::getTexture("jungle_idle");
+		_animationManager.addAnimation("idle_animation", new Animation(jungleIdleTexture, glm::vec2(0, 0), glm::vec2(11, 0), 0.8f));
 		_animationManager.addAnimation("run_animation", new Animation(jungleRunTexture, glm::vec2(0, 0), glm::vec2(7, 0), 0.6f));
 		_animationManager.addAnimation("jump_animation", new Animation(jungleJumpTexture, glm::vec2(0, 0), glm::vec2(1, 0), 0.3f));
-	};
+	}
+
+	void jump()
+	{
+		if (!_jumping && !_falling)
+		{
+			_jumping = true;
+			_velocity = 300;
+			_animationManager.makeTransition("jump_animation", { glm::vec2(3, 0), glm::vec2(7, 0) }, glm::vec2(0, 0));
+		}
+	}
+
+	void goLeft()
+	{
+		if(!_left && !_jumping && !_falling)
+		{
+			_left = true;
+			_runningVelocity = -400;
+		}
+		
+	}
+
+	void goRight()
+	{
+		if(_left && !_jumping && !_falling)
+		{
+			_left = false;
+			_runningVelocity = 400;
+		}
+	}
+
+	void stop()
+	{
+		if(!_stopped)
+		{
+			_stopped = true;
+			_runningVelocity = 0;
+		}
+	}
+
+	void handleInput(const Window& window)
+	{
+		if (window.isKeyboardKeyPressed(GLFW_KEY_LEFT)) goLeft();
+		else if (window.isKeyboardKeyPressed(GLFW_KEY_RIGHT)) goRight();
+		else stop();
+		
+		if (window.isKeyboardKeyPressed(GLFW_KEY_SPACE)) jump();
+	}
 
 	void update(float dt) override
 	{
 		_animationManager.updateAnimation(dt);
-		_position.x += 400 * dt;
-		
-		if (_position.x >= 100 && _position.x <= 130)
+		_position.x += _runningVelocity * dt;
+
+		/*if (_position.x >= 100 && _position.x <= 130)
 		{
-			_velocity = 300;
-			_jumping = true;
-			_animationManager.makeTransition("jump_animation", { glm::vec2(3, 0), glm::vec2(7, 0) }, glm::vec2(0, 0));
-		}
+		jump();
+		}*/
 
 		if (_jumping)
 		{
@@ -55,7 +109,7 @@ public:
 				_falling = true;
 			}
 		}
-		else if(_falling)
+		else if (_falling)
 		{
 			_position.y -= _velocity * dt;
 			_velocity += _gravity * dt;
@@ -70,7 +124,7 @@ public:
 
 		if (!_jumping && !_falling)
 		{
-			if(_soundTime > 0.3f)
+			if (_soundTime > 0.3f)
 			{
 				_soundTime = 0.0f;
 				_soundEngine->play2D("Resources/Fantozzi-SandL2.flac", GL_FALSE);
@@ -78,9 +132,10 @@ public:
 		}
 
 		if (_position.x > 800) _position.x = -100;
+		else if (_position.x < -100) _position.x = 800;
 		_time += dt;
 		_soundTime += dt;
-		if(_time > 0.6f)
+		if (_time > 0.6f)
 		{
 			_time = 0.0f;
 		}
@@ -89,7 +144,12 @@ public:
 	void draw(Renderer renderer) override
 	{
 		renderer.draw(_position, _size, *_animationManager.getCurrentAnimationTexture(),
-			_animationManager.getCurrentTextureFramePosition(), _animationManager.getCurrentAnimationTexture()->getFrameSize());
+			_animationManager.getCurrentTextureFramePosition(), _animationManager.getCurrentAnimationTexture()->getFrameSize(), _left);
+	}
+
+	const glm::vec2& getPosition()
+	{
+		return _position;
 	}
 
 	~Character() = default;

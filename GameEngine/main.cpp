@@ -5,6 +5,7 @@
 #include "Graphics/window.h"
 #include "Utilities/timer.h"
 #include "Graphics/renderer.h"
+#include "Graphics/text_renderer.h"
 #include "Utilities/resource_manager.h"
 #include "character.h"
 #include <vector>
@@ -28,8 +29,7 @@ int main()
 	ResourceManager::loadTexture("Resources/plx-4.png", "bg2", 1, 1);
 	ResourceManager::loadFont("Resources/ARCADECLASSIC.TTF", "Arcade20", 20);
 
-
-	Character character = Character(100, 120, 100, 157, SoundEngine);
+	Character character = Character(100, 80, 100, 157, SoundEngine);
 	std::vector<Tile*> tiles;
 
 	Tile* bg1 = new Tile(glm::vec3(0, 0, -0.9f), glm::vec2(800, 600), ResourceManager::getTexture("bg1"));
@@ -50,6 +50,8 @@ int main()
 	renderer.setProjection(glm::ortho(0.f, 800.f, 0.f, 600.f, -1.0f, 1.0f));
 	textRenderer.setProjection(glm::ortho(0.f, 800.f, 0.f, 600.f, -1.0f, 1.0f));;
 
+	SoundEngine->play2D("Resources/little town - orchestral.ogg", GL_TRUE);
+
 	Timer timer;
 	Timer frameTimer;
 	unsigned int fps = 0;
@@ -58,11 +60,10 @@ int main()
 
 	unsigned int fps_to_show = 0;
 
-	SoundEngine->play2D("Resources/little town - orchestral.ogg", GL_TRUE);
 
 	while (!window.isClosed())
 	{
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT);
 
 		float ftime = static_cast<float>(frameTimer.time().count());
 		frameTimer.restart();
@@ -70,20 +71,20 @@ int main()
 		std::stringstream sfps;
 		sfps << fps_to_show;
 
-		for(Tile* tile : tiles)
+		for (Tile* tile : tiles)
 		{
 			tile->draw(renderer);
 		}
 
+		character.handleInput(window);
 		character.update(ftime);
 		character.draw(renderer);
-
-		textRenderer.drawText(sfps.str(), ResourceManager::getFont("Arcade20"), glm::vec3(20, 570, 0.0f), glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
+		textRenderer.drawText(sfps.str(), ResourceManager::getFont("Arcade20"), glm::vec3(20, 570, 0.9f), glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
 
 		//update window state
 		window.update();
 		fps++;
-		if(timer.time().count() > 1.f)
+		if (timer.time().count() > 1.f)
 		{
 			//one second passed, show fps
 			fps_to_show = fps;

@@ -41,6 +41,7 @@
     <ClCompile Include="Graphics\animation_manager.cpp" />
     <ClCompile Include="Graphics\renderer.cpp" />
     <ClCompile Include="Graphics\shader.cpp" />
+    <ClCompile Include="Graphics\text_renderer.cpp" />
     <ClCompile Include="Graphics\window.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Utilities\file_reader.cpp" />
