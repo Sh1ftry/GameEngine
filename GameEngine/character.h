@@ -144,7 +144,7 @@ public:
 	void draw(Renderer renderer) override
 	{
 		renderer.draw(_position, _size, *_animationManager.getCurrentAnimationTexture(),
-			_animationManager.getCurrentTextureFramePosition(), _animationManager.getCurrentAnimationTexture()->getFrameSize(), _left);
+			_animationManager.getCurrentTextureFramePosition(), _animationManager.getCurrentAnimationTexture()->getFrameSize(), _left, true);
 	}
 
 	const glm::vec2& getPosition()

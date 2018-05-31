@@ -76,7 +76,7 @@ void Renderer::draw(const glm::vec3 & position, const glm::vec2 & size, const Te
 	_shader->setUniformMat4("model", model);
 	_shader->setUniform1i("tex", 0);
 	_shader->setUniform2f("tPos", tPos);
-	_shader->setUniform3f("tSize", glm::vec3(tSize, (flipVert ? 1.0f : 0.0f)));
+	_shader->setUniform4f("tSize", glm::vec4(tSize, (flipVert ? 1.0f : 0.0f), (flipHoriz ? 1.0f : 0.0f)));
 
 	texture.use(0);
 	glBindVertexArray(_vertexArray);
