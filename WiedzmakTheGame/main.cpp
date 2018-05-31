@@ -12,6 +12,7 @@
 #include "tile.h"
 #include <sstream>
 #include <irrKlang/irrKlang.h>
+#include <iostream>
 
 irrklang::ISoundEngine *SoundEngine = irrklang::createIrrKlangDevice();
 
@@ -21,13 +22,23 @@ int main()
 	Window window("Window", 800, 600);
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 
-	ResourceManager::loadShaders("Resources/text.vert", "Resources/text.frag", "text");
-	ResourceManager::loadShaders("Resources/basic.vert", "Resources/basic.frag", "basic");
+	try
+	{
+		ResourceManager::loadShaders("Resources/text.vert", "Resources/text.frag", "text");
+		ResourceManager::loadShaders("Resources/basic.vert", "Resources/basic.frag", "basic");
 
-	ResourceManager::loadTexture("Resources/jungle_tileset.png", "jungle_tileset", 19, 39);
-	ResourceManager::loadTexture("Resources/plx-1.png", "bg1", 1, 1);
-	ResourceManager::loadTexture("Resources/plx-4.png", "bg2", 1, 1);
-	ResourceManager::loadFont("Resources/ARCADECLASSIC.TTF", "Arcade20", 20);
+		ResourceManager::loadTexture("Resources/jungle_tileset.png", "jungle_tileset", 19, 39);
+		ResourceManager::loadTexture("Resources/plx-1.png", "bg1", 1, 1);
+		ResourceManager::loadTexture("Resources/plx-4.png", "bg2", 1, 1);
+		ResourceManager::loadFont("Resources/ARCADECLASSIC.TTF", "Arcade20", 20);
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << e.what();
+		std::cin.ignore();
+		std::cin.get();
+		return -1;
+	}
 
 	Character character = Character(100, 80, 100, 157, SoundEngine);
 	std::vector<Tile*> tiles;

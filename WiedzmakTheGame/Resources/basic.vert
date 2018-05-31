@@ -19,7 +19,7 @@ void main()
 	
 	if(tSize.z == 1.0f)
 	{
-		texPosition = vec2(1.0f - texturePosition.x, texturePosition.y);	
+		texPosition = vec2(1.0f - texturePosition.x, texturePosition.y);
 	}
 	else
 	{
