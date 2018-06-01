@@ -27,7 +27,6 @@
     <ClInclude Include="Graphics\sprite.h" />
     <ClInclude Include="Graphics\static_sprite.h" />
     <ClInclude Include="Graphics\texture.h" />
-    <ClInclude Include="Graphics\text_renderer.h" />
     <ClInclude Include="Graphics\window.h" />
     <ClInclude Include="Utilities\file_reader.h" />
     <ClInclude Include="Utilities\font.h" />
@@ -39,7 +38,6 @@
     <ClCompile Include="Graphics\animation_manager.cpp" />
     <ClCompile Include="Graphics\renderer.cpp" />
     <ClCompile Include="Graphics\shader.cpp" />
-    <ClCompile Include="Graphics\text_renderer.cpp" />
     <ClCompile Include="Graphics\window.cpp" />
     <ClCompile Include="Utilities\file_reader.cpp" />
     <ClCompile Include="Utilities\font.cpp" />
