@@ -1,8 +1,7 @@
 #include "renderer.h"
 #include <glm/gtc/matrix_transform.hpp>
 
-Renderer::Renderer(const Shader* shader)
-	: _shader(shader)
+Renderer::Renderer()
 {
 	GLuint vertexBuffer;
 	GLuint _elementBuffer;
@@ -40,30 +39,23 @@ Renderer::Renderer(const Shader* shader)
 	glBindBuffer(GL_ARRAY_BUFFER, NULL);
 }
 
-void Renderer::setProjection(const glm::mat4 & projectionMatrix)
-{
-	_shader->enable();
-	_shader->setUniformMat4("projection", projectionMatrix);
-}
+//void Renderer::draw(const glm::vec3 & position, const glm::vec2 & size, const glm::vec4 & color) const
+//{
+//	glm::mat4 model(1.0f);
+//	model = glm::translate(model, position);
+//	model = glm::scale(model, glm::vec3(size, 1.0f));
+//
+//	_shader->setUniformMat4("model", model);
+//	_shader->setUniform4f("col", color);
+//
+//	glBindVertexArray(_vertexArray);
+//	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, nullptr);
+//	glBindVertexArray(NULL);
+//	_shader->disable();
+//
+//}
 
-void Renderer::draw(const glm::vec3 & position, const glm::vec2 & size, const glm::vec4 & color)
-{
-	glm::mat4 model(1.0f);
-	model = glm::translate(model, position);
-	model = glm::scale(model, glm::vec3(size, 1.0f));
-
-	_shader->enable();
-	_shader->setUniformMat4("model", model);
-	_shader->setUniform4f("col", color);
-
-	glBindVertexArray(_vertexArray);
-	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, nullptr);
-	glBindVertexArray(NULL);
-	_shader->disable();
-
-}
-
-void Renderer::draw(const glm::vec3 & position, const glm::vec2 & size, const Texture & texture, const glm::vec2 & texturePosition, const glm::vec2 & textureSize, bool flipVert, bool flipHoriz)
+void Renderer::draw(const glm::vec3 & position, const glm::vec2 & size, const Texture & texture, const glm::vec2 & texturePosition, const glm::vec2 & textureSize, bool flipVert, bool flipHoriz) const
 {
 	glm::mat4 model(1.0f);
 	model = glm::translate(model, position);
@@ -85,8 +77,42 @@ void Renderer::draw(const glm::vec3 & position, const glm::vec2 & size, const Te
 	_shader->disable();
 }
 
+void Renderer::drawText(const std::string & text, const Font * font, glm::vec3 position, const glm::vec4 & color) const
+{
+	_shader->enable();
+	for (char c : text)
+	{
+		const Font::Character& character = font->getCharacter(c);
+
+		glm::mat4 model(1.0f);
+		model = glm::translate(model, glm::vec3(position.x + character._bearing.x, position.y - (character.size.y - character._bearing.y), 0.0f));
+		model = glm::scale(model, glm::vec3(character.size, 1.0f));
+
+		_shader->setUniformMat4("model", model);
+		_shader->setUniform1i("tex", 0);
+		_shader->setUniform4f("col", color);
+
+		character.texture->use(0);
+		glBindVertexArray(_vertexArray);
+		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, nullptr);
+		glBindVertexArray(NULL);
+		position.x += (character.advance >> 6);
+	}
+	_shader->disable();
+}
+
+void Renderer::useShader(Shader * shader)
+{
+	_shader = shader;
+}
+
+void Renderer::setProjection(const glm::mat4 & projectionMatrix)
+{
+	_shader->enable();
+	_shader->setUniformMat4("projection", projectionMatrix);
+}
+
 Renderer::~Renderer()
 {
 	//glDeleteVertexArrays()
 }
-

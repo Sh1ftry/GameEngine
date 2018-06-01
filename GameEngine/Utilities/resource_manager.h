@@ -19,6 +19,6 @@ public:
 	static void loadFont(const std::string& path, const std::string& name, unsigned int size);
 	static const Font* getFont(const std::string& name);
 	static void loadShaders(const std::string & vertexPath, const std::string & fragmentPath, const std::string & name);
-	static const Shader* getShader(const std::string& name);
+	static Shader* getShader(const std::string& name);
 	~ResourceManager();
 };

@@ -17,13 +17,15 @@ private:
 		glm::vec2 texturePosition;
 	};
 	GLuint _vertexArray;
-	const Shader* _shader;
+	Shader* _shader;
 public:
-	/**
-	 * @param shader shader responsible for handling rendering
-	 */
-	Renderer(const Shader* shader);
+	Renderer();
 	~Renderer();
+	/**
+	 * @brief Activates shader
+	 * @param shader shader to activate
+	 */
+	void useShader(Shader* shader);
 	/**
 	 * @brief Sets projection matrix
 	 * @param projectionMatrix projection matrix to set
@@ -35,7 +37,7 @@ public:
 	 * @param size		size of the sprite
 	 * @param color		color of the sprite
 	 */
-	void draw(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color);
+	//void draw(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color) const;
 	/**
 	 * @brief Draws textured sprite
 	 * @param position	position where to draw sprite
@@ -46,5 +48,13 @@ public:
 	 * @param flipVert			should flip vertical while drawing
 	 * @param flipHoriz			should flip horizontal while drawing
 	 */
-	void draw(const glm::vec3& position, const glm::vec2& size, const Texture& texture, const glm::vec2& texturePosition, const glm::vec2& textureSize, bool flipVert = false, bool flipHoriz = false);
+	void draw(const glm::vec3& position, const glm::vec2& size, const Texture& texture, const glm::vec2& texturePosition, const glm::vec2& textureSize, bool flipVert = false, bool flipHoriz = false) const;
+	/**
+	* @brief			Draws text
+	* @param text		text to draw
+	* @param font		font with which to draw the text
+	* @param position	vector with position
+	* @param color		color of the text
+	*/
+	void drawText(const std::string& text, const Font * font, glm::vec3 position, const glm::vec4& color) const;
 };

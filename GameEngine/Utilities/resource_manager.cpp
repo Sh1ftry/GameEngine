@@ -58,7 +58,7 @@ void ResourceManager::loadShaders(const std::string & vertexPath, const std::str
 	_shaders[name] = new Shader(vertexPath.c_str(), fragmentPath.c_str());
 }
 
-const Shader* ResourceManager::getShader(const std::string & name)
+Shader* ResourceManager::getShader(const std::string & name)
 {
 	return _shaders.at(name);
 }

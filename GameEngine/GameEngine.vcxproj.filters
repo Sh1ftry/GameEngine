@@ -87,18 +87,4 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\basic.frag">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Resources\basic.vert">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Resources\text.frag">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Resources\text.vert">
-      <Filter>Resource Files</Filter>
-    </None>
-  </ItemGroup>
 </Project>

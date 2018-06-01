@@ -45,12 +45,6 @@
     <ClCompile Include="Utilities\font.cpp" />
     <ClCompile Include="Utilities\resource_manager.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\basic.frag" />
-    <None Include="Resources\basic.vert" />
-    <None Include="Resources\text.frag" />
-    <None Include="Resources\text.vert" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{F07559FD-0F24-45BC-A177-A32231726858}</ProjectGuid>
