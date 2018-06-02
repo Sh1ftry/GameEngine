@@ -29,9 +29,9 @@ public:
 	/**
 	 * @return Duration since the start if the timer
 	 */
-	std::chrono::duration<double> time() const
+	float time() const
 	{
-		return std::chrono::high_resolution_clock::now() - _start;
+		return (std::chrono::high_resolution_clock::now() - _start).count();
 	}
 
 };
