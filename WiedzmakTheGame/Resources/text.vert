@@ -12,5 +12,6 @@ uniform mat4 model = mat4(1.0f);
 void main()
 {
 	gl_Position = projection * view * model * position;
-	texPos = texturePosition;
+	vec2 temp = vec2(texturePosition.x, 1.0f - texturePosition.y); 
+	texPos = temp;
 }

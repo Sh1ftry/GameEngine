@@ -7,9 +7,14 @@ class GameStateManager
 private:
 	std::stack<GameState*> _gameStates;
 public:
-	void pushState();
+	void pushState(GameState* gameState);
 	void popState();
-	GameStateManager();
+
+	void render();
+	void handleInput();
+	void update(float dt);
+
+	GameStateManager() = default;
 	~GameStateManager();
 };
 

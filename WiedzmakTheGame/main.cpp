@@ -20,7 +20,6 @@ int main()
 {
 	//game window
 	Window window("Window", 800, 600);
-	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 
 	try
 	{
@@ -56,10 +55,10 @@ int main()
 		tiles.push_back(newTile2);
 	}
 
-	Renderer renderer(ResourceManager::getShader("basic"));
-	TextRenderer textRenderer(ResourceManager::getShader("text"));
-	renderer.setProjection(glm::ortho(0.f, 800.f, 0.f, 600.f, -1.0f, 1.0f));
-	textRenderer.setProjection(glm::ortho(0.f, 800.f, 0.f, 600.f, -1.0f, 1.0f));;
+	Renderer renderer;
+	Shader* shader = ResourceManager::getShader("basic");
+	Shader* textShader = ResourceManager::getShader("text");
+	const glm::mat4 projection = glm::ortho(0.f, 800.f, 0.f, 600.f, -1.0f, 1.0f);
 
 	SoundEngine->play2D("Resources/little town - orchestral.ogg", GL_TRUE);
 
@@ -74,6 +73,7 @@ int main()
 
 	while (!window.isClosed())
 	{
+		glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		float ftime = static_cast<float>(frameTimer.time().count());
@@ -82,6 +82,9 @@ int main()
 		std::stringstream sfps;
 		sfps << fps_to_show;
 
+		renderer.useShader(shader);
+		renderer.setProjection(projection);
+		
 		for (Tile* tile : tiles)
 		{
 			tile->draw(renderer);
@@ -90,7 +93,10 @@ int main()
 		character.handleInput(window);
 		character.update(ftime);
 		character.draw(renderer);
-		textRenderer.drawText(sfps.str(), ResourceManager::getFont("Arcade20"), glm::vec3(20, 570, 0.9f), glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
+		
+		renderer.useShader(textShader);
+		renderer.setProjection(projection);
+		renderer.drawText(sfps.str(), ResourceManager::getFont("Arcade20"), glm::vec3(20, 570, 0.9f), glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
 
 		//update window state
 		window.update();
