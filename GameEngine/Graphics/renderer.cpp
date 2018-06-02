@@ -104,12 +104,13 @@ void Renderer::drawText(const std::string & text, const Font * font, glm::vec3 p
 void Renderer::useShader(Shader * shader)
 {
 	_shader = shader;
+	_shader->enable();
+	_shader->setUniformMat4("projection", _projection);
 }
 
 void Renderer::setProjection(const glm::mat4 & projectionMatrix)
 {
-	_shader->enable();
-	_shader->setUniformMat4("projection", projectionMatrix);
+	_projection = projectionMatrix;
 }
 
 Renderer::~Renderer()

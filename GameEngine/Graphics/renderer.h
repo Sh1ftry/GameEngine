@@ -18,6 +18,7 @@ private:
 	};
 	GLuint _vertexArray;
 	Shader* _shader;
+	glm::mat4 _projection;
 public:
 	Renderer();
 	~Renderer();
