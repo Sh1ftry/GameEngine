@@ -8,9 +8,9 @@ class GameStateManager;
 class GameState
 {
 public:
-	virtual void update(GameStateManager* gameStateManager) = 0;
-	virtual void draw(Renderer* renderer) = 0;
-	virtual void handleInput(const Window* window) = 0;
+	virtual void update(GameStateManager& gameStateManager, float dt) = 0;
+	virtual void render(Renderer& renderer) = 0;
+	virtual void handleInput(const Window& window) = 0;
 	virtual ~GameState() = default;
 };
 

@@ -11,11 +11,11 @@ private:
 	unsigned int _height = 600;
 	
 	Window _window;
-	Renderer _renderer;
+	Renderer* _renderer;
 	GameStateManager _gameStateManager;
-	irrklang::ISoundEngine *_soundEngine;
+	irrklang::ISoundEngine* _soundEngine;
 	
-	float _dt;
+	double _dt;
 	bool _running;
 
 	void update();
@@ -23,5 +23,6 @@ private:
 	void handleInput();
 public:
 	WiedzmakGame();
+	~WiedzmakGame();
 	void run();
 };

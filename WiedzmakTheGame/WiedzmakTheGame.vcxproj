@@ -123,12 +123,16 @@
   <ItemGroup>
     <ClCompile Include="GameStateManager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MenuState.cpp" />
+    <ClCompile Include="TestState.cpp" />
     <ClCompile Include="WiedzmakGame.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="character.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GameStateManager.h" />
+    <ClInclude Include="MenuState.h" />
+    <ClInclude Include="TestState.h" />
     <ClInclude Include="tile.h" />
     <ClInclude Include="WiedzmakGame.h" />
   </ItemGroup>

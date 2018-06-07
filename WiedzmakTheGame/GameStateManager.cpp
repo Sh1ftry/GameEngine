@@ -13,16 +13,19 @@ void GameStateManager::popState()
 	delete gameState;
 }
 
-void GameStateManager::render()
+void GameStateManager::render(Renderer& renderer)
 {
+	_gameStates.top()->render(renderer);
 }
 
-void GameStateManager::handleInput()
+void GameStateManager::handleInput(const Window& window)
 {
+	_gameStates.top()->handleInput(window);
 }
 
 void GameStateManager::update(float dt)
 {
+	_gameStates.top()->update(*this, dt);
 }
 
 

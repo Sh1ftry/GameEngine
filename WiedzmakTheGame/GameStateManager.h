@@ -1,6 +1,9 @@
 #pragma once
 #include "GameState.h"
+#include "Graphics/renderer.h"
 #include <stack>
+
+class GameState;
 
 class GameStateManager
 {
@@ -10,8 +13,8 @@ public:
 	void pushState(GameState* gameState);
 	void popState();
 
-	void render();
-	void handleInput();
+	void render(Renderer& renderer);
+	void handleInput(const Window& window);
 	void update(float dt);
 
 	GameStateManager() = default;

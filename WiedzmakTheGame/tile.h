@@ -7,6 +7,16 @@ class Tile : public StaticSprite
 public:
 	Tile(const glm::vec3& position, const glm::vec2& size, const Texture* texture, const glm::vec2& textureFramePosition = glm::vec2(0.0f))
 		: StaticSprite(position, size, texture, textureFramePosition) {}
+
+	void setPosition(const glm::vec3& newPos)
+	{
+		_position = newPos;
+	}
+
+	const glm::vec3& getPosition() const
+	{
+		return _position;
+	}
 	
 	void setTextureFramePosition(const glm::vec2& textureFramePosition)
 	{

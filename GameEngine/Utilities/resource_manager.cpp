@@ -63,9 +63,19 @@ Shader* ResourceManager::getShader(const std::string & name)
 	return _shaders.at(name);
 }
 
-ResourceManager::~ResourceManager()
+void ResourceManager::clearResources()
 {
-	for(std::pair<std::string, Texture*> element: _textures)
+	for (std::pair<std::string, Texture*> element : _textures)
+	{
+		delete element.second;
+	}
+
+	for (std::pair<std::string, Font*> element : _fonts)
+	{
+		delete element.second;
+	}
+
+	for (std::pair<std::string, Shader*> element : _shaders)
 	{
 		delete element.second;
 	}
