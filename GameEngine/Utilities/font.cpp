@@ -37,9 +37,9 @@ Font::Font(const std::string& path, unsigned int size)
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
-		const Texture* texture = new const Texture(id, face->glyph->bitmap.rows, face->glyph->bitmap.width, 1, 1);
+		Texture* texture = new Texture(id, face->glyph->bitmap.rows, face->glyph->bitmap.width, 1, 1);
 
-		const Character character =
+		Character character =
 		{
 			texture,
 			glm::ivec2(face->glyph->bitmap.width, face->glyph->bitmap.rows),
@@ -48,10 +48,27 @@ Font::Font(const std::string& path, unsigned int size)
 		};
 
 		_characters[c] = character;
+		character.texture = nullptr;
 	}
 
 	FT_Done_Face(face);
 	FT_Done_FreeType(ft);
+}
+
+glm::vec2 Font::getTextSize(const std::string & text) const
+{
+	unsigned int width = 0;
+	int xMin = 0;
+	int xMax = 0;
+	for(char character : text)
+	{
+		const Character& info = getCharacter(character);
+		if (info._bearing.y > xMax) xMax = info._bearing.y;
+		if (info.size.y - info._bearing.y > xMin) xMin = info.size.y - info._bearing.y;
+
+		width += (info.advance >> 6);
+	}
+	return glm::vec2(width, xMax + xMin);
 }
 
 const Font::Character& Font::getCharacter(char character) const
