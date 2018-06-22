@@ -13,13 +13,11 @@ Shader::Shader(const char * vert, const char * frag)
 	if (!FileReader::readFile(vert, vertexSource))
 	{
 		throw std::runtime_error("Shader '" + std::string(vert) + "' not found!");
-		//std::cout << "Vertex shader not found!" << std::endl;
 	}
 
 	if(!FileReader::readFile(frag, fragmentSource))
 	{
 		throw std::runtime_error("Shader '" + std::string(frag) + "' not found!");
-		//std::cout << "Fragment shader not found!" << std::endl;
 	}
 
 	//creating program for shaders

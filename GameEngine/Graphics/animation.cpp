@@ -28,7 +28,7 @@ void Animation::update(float dt)
 		}
 		else if (_currentFrame.y == _to.y)
 		{
-			if (_currentFrame.x == _texture->getGridSize().x)
+			if (_currentFrame.x >= _to.x)
 			{
 				_currentFrame = _from;
 			}
