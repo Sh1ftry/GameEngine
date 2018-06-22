@@ -2,6 +2,10 @@
 #include "Graphics/static_sprite.h"
 #include "Graphics/renderer.h"
 
+/**
+* @brief class represents a single texture in the game
+*/
+
 class Tile : public StaticSprite
 {
 public:

@@ -90,7 +90,13 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\Aleksander\Documents\DwaMiecze\GameEngine\Dependencies;C:\Users\Aleksander\Documents\DwaMiecze\GameEngine\GameEngine;C:\Users\Aleksander\Documents\DwaMiecze\GameEngine\Dependencies\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>C:\Users\Aleksander\Desktop\GameEngine\Dependencies\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <SubSystem>
+      </SubSystem>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -121,20 +127,39 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ExitState.cpp" />
     <ClCompile Include="GameStateManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuState.cpp" />
-    <ClCompile Include="TestState.cpp" />
+    <ClCompile Include="MapState.cpp" />
+    <ClCompile Include="TheGame.cpp" />
     <ClCompile Include="WiedzmakGame.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="character.h" />
+    <ClInclude Include="Babcia.h" />
+    <ClInclude Include="Character2.h" />
+    <ClInclude Include="ExitState.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GameStateManager.h" />
+    <ClInclude Include="Golem.h" />
+    <ClInclude Include="gramps.h" />
+    <ClInclude Include="Hero.h" />
+    <ClInclude Include="JSONParser.h" />
+    <ClInclude Include="Layer.h" />
+    <ClInclude Include="Map.h" />
+    <ClInclude Include="MapManager.h" />
+    <ClInclude Include="MapObject.h" />
     <ClInclude Include="MenuState.h" />
-    <ClInclude Include="TestState.h" />
+    <ClInclude Include="PassTileh.h" />
+    <ClInclude Include="SolidTile.h" />
+    <ClInclude Include="MapState.h" />
+    <ClInclude Include="TheGame.h" />
     <ClInclude Include="tile.h" />
+    <ClInclude Include="TileSetInfo.h" />
+    <ClInclude Include="TransitionTile.h" />
     <ClInclude Include="WiedzmakGame.h" />
+    <ClInclude Include="wujaszek.h" />
+    <ClInclude Include="zegar.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\basic.frag" />

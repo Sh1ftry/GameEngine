@@ -5,6 +5,10 @@
 
 class GameState;
 
+/**
+* @brief Class responisble for managing game states
+*/
+
 class GameStateManager
 {
 private:

@@ -17,6 +17,7 @@ private:
 	float _runningVelocity;
 	float _time;
 	float _soundTime;
+	bool _running;
 	irrklang::ISoundEngine* _soundEngine;
 public:
 	Character(float x, float y, float width, float height, irrklang::ISoundEngine* soundEngine)
@@ -26,6 +27,7 @@ public:
 		_soundTime = 0.0f;
 		_jumping = false;
 		_falling = false;
+		_running = false;
 		_left = false;
 		_stopped = true;
 		_gravity = 900;
@@ -47,6 +49,7 @@ public:
 		if (!_jumping && !_falling)
 		{
 			_jumping = true;
+			_stopped = false;
 			_velocity = 300;
 			_animationManager.makeTransition("jump_animation", { glm::vec2(3, 0), glm::vec2(7, 0) }, glm::vec2(0, 0));
 		}
@@ -54,27 +57,35 @@ public:
 
 	void goLeft()
 	{
-		if(!_left && !_jumping && !_falling)
+		if((!_left && !_jumping && !_falling) || _stopped)
 		{
+			if(!_running) _animationManager.makeTransition("run_animation", { glm::vec2(0,0) }, glm::vec2(0, 0));
+			_running = true;
 			_left = true;
-			_runningVelocity = -400;
+			_stopped = false;
+			_runningVelocity = -200;
 		}
 		
 	}
 
 	void goRight()
 	{
-		if(_left && !_jumping && !_falling)
+		if((_left && !_jumping && !_falling) || _stopped)
 		{
+			if (!_running) _animationManager.makeTransition("run_animation", { glm::vec2(0,0) }, glm::vec2(0, 0));
+			_running = true;
 			_left = false;
-			_runningVelocity = 400;
+			_stopped = false;
+			_runningVelocity = 200;
 		}
 	}
 
 	void stop()
 	{
-		if(!_stopped)
+		if (!_falling && !_jumping)
 		{
+			_animationManager.makeTransition("idle_animation", { glm::vec2(0,0), glm::vec2(2,0), glm::vec2(4,0), glm::vec2(6,0) }, glm::vec2(3, 0));
+			_running = false;
 			_stopped = true;
 			_runningVelocity = 0;
 		}
@@ -84,8 +95,7 @@ public:
 	{
 		if (window.isKeyboardKeyPressed(GLFW_KEY_LEFT)) goLeft();
 		else if (window.isKeyboardKeyPressed(GLFW_KEY_RIGHT)) goRight();
-		else stop();
-		
+		else if(window.isKeyboardKeyPressed(GLFW_KEY_DOWN)) stop();
 		if (window.isKeyboardKeyPressed(GLFW_KEY_SPACE)) jump();
 	}
 
@@ -116,15 +126,21 @@ public:
 			if (_position.y < 80)
 			{
 				_velocity = 0;
-				_animationManager.makeTransition("run_animation", { glm::vec2(1, 0) }, glm::vec2(0, 0));
+				if (_runningVelocity != 0)
+					_animationManager.makeTransition("run_animation", { glm::vec2(1,0) }, glm::vec2(0, 0));
+				else
+				{
+					_animationManager.makeTransition("idle_animation", { glm::vec2(0,0), glm::vec2(2,0), glm::vec2(4,0), glm::vec2(6,0) }, glm::vec2(3, 0));
+					_stopped = true;
+				}
 				_falling = false;
 				_position.y = 80;
 			}
 		}
 
-		if (!_jumping && !_falling)
+		if (!_jumping && !_falling && !_stopped)
 		{
-			if (_soundTime > 0.3f)
+			if (_soundTime > 0.4f)
 			{
 				_soundTime = 0.0f;
 				_soundEngine->play2D("Resources/Fantozzi-SandL2.flac", GL_FALSE);

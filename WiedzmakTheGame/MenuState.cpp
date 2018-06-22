@@ -1,14 +1,20 @@
 #include "MenuState.h"
 #include "Utilities/resource_manager.h"
+#include "MapState.h"
+#include "TheGame.h"
 
-MenuState::MenuState()
+MenuState::MenuState(irrklang::ISoundEngine* soundEngine) : _soundEngine(soundEngine)
 {
+	
 	const Font* font = ResourceManager::getFont("Arcade72");
 	_labels.push_back("New Game");
-	_labels.push_back("Load Game");
-	_labels.push_back("Options");
-	_labels.push_back("Credits");
-	_labels.push_back("Quit");
+	//_labels.push_back("Load Game");
+	//_labels.push_back("Options");
+	//_labels.push_back("Credits");
+	_labels.push_back("Arena");
+
+	_transition_to_test = false;
+	_transition_to_battle = false;
 
 	unsigned int y = 450;
 	for(std::string label : _labels)
@@ -19,9 +25,12 @@ MenuState::MenuState()
 		_labelsPositions.emplace_back(glm::vec2(x, y));
 	}
 
-	_background = new Tile(glm::vec3(0, 0, -0.9f), glm::vec2(800, 600), ResourceManager::getTexture("bg1"));
-	_tile1 = new Tile(glm::vec3(0, 0, -0.9f), glm::vec2(800, 600), ResourceManager::getTexture("bg2"));
-	_tile2 = new Tile(glm::vec3(-800, 0, -0.9f), glm::vec2(800, 600), ResourceManager::getTexture("bg2"));
+	_background = new Tile(glm::vec3(0, 0, -0.9f), glm::vec2(800, 640), ResourceManager::getTexture("bg1"));
+	_tile1 = new Tile(glm::vec3(0, 0, -0.9f), glm::vec2(800, 640), ResourceManager::getTexture("bg2"));
+	_tile2 = new Tile(glm::vec3(-800, 0, -0.9f), glm::vec2(800, 640), ResourceManager::getTexture("bg2"));
+
+	_soundEngine->stopAllSounds();
+	_soundEngine->play2D("Resources/music/little town - orchestral.ogg", GL_TRUE);
 
 	_activeLabel = 0;
 }
@@ -52,6 +61,16 @@ void MenuState::update(GameStateManager & gameStateManager, float dt)
 	
 	_tile1->setPosition(pos1);
 	_tile2->setPosition(pos2);
+	if (_transition_to_test)
+	{
+		_transition_to_test = false;
+		gameStateManager.pushState(new MapState(_soundEngine));
+	}
+	if(_transition_to_battle)
+	{
+		_transition_to_battle = false;
+		gameStateManager.pushState(new TheGame(_soundEngine));
+	}
 }
 
 void MenuState::render(Renderer & renderer)
@@ -71,6 +90,12 @@ void MenuState::render(Renderer & renderer)
 	}
 }
 
+bool MenuState::quit() const
+{
+	return _quit;
+}
+
+
 void MenuState::handleInput(const Window & window)
 {
 	if (!window.isKeyboardKeyPressed(GLFW_KEY_UP) && !window.isKeyboardKeyPressed(GLFW_KEY_DOWN)) _keyPressed = false;
@@ -78,13 +103,18 @@ void MenuState::handleInput(const Window & window)
 	{
 		_keyPressed = true;
 		_activeLabel--;
-		if (_activeLabel < 0) _activeLabel = 0;
+		if (_activeLabel < 0) _activeLabel = _labels.size()-1;
 	}
 	else if (window.isKeyboardKeyPressed(GLFW_KEY_DOWN) && !_keyPressed)
 	{
 		_keyPressed = true;
 		_activeLabel++;
-		if (_activeLabel > 4) _activeLabel = 4;
+		if (_activeLabel >= _labels.size()) _activeLabel = 0;
+	}
+	else if (window.isKeyboardKeyPressed(GLFW_KEY_ENTER) && !_keyPressed)
+	{
+		if (_activeLabel == 0) _transition_to_test = true;
+		else if (_activeLabel == 1) _transition_to_battle = true;
 	}
 }
 

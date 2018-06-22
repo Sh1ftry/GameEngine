@@ -4,7 +4,9 @@
 #include "Graphics/renderer.h"
 
 class GameStateManager;
-
+/**
+* @brief Class game state interface
+*/
 class GameState
 {
 public:
